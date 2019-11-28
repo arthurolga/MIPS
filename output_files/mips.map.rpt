@@ -1,0 +1,1390 @@
+Analysis & Synthesis report for mips
+Thu Nov 14 16:58:49 2019
+Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Parameter Settings for User Entity Instance: fluxo_dados:FD
+ 12. Parameter Settings for User Entity Instance: fluxo_dados:FD|bancoRegistradores:BR
+ 13. Parameter Settings for User Entity Instance: fluxo_dados:FD|ULA:ULA
+ 14. Parameter Settings for User Entity Instance: fluxo_dados:FD|Registrador:PC
+ 15. Parameter Settings for User Entity Instance: fluxo_dados:FD|somador:Somador_imediato
+ 16. Parameter Settings for User Entity Instance: fluxo_dados:FD|soma4:Somador
+ 17. Parameter Settings for User Entity Instance: fluxo_dados:FD|ROM:ROM
+ 18. Parameter Settings for User Entity Instance: fluxo_dados:FD|single_port_RAM:RAM
+ 19. Parameter Settings for User Entity Instance: fluxo_dados:FD|estendeSinalGenerico:extensor
+ 20. Parameter Settings for User Entity Instance: fluxo_dados:FD|shift2_imediato:shift
+ 21. Parameter Settings for User Entity Instance: fluxo_dados:FD|shift2:shift_jump
+ 22. Parameter Settings for User Entity Instance: fluxo_dados:FD|muxGenerico2:mux_Ula_Memoria
+ 23. Parameter Settings for User Entity Instance: fluxo_dados:FD|muxGenerico2:mux_Rd_Rt
+ 24. Parameter Settings for User Entity Instance: fluxo_dados:FD|muxGenerico2:mux_Banco_Ula
+ 25. Parameter Settings for User Entity Instance: fluxo_dados:FD|muxGenerico2:mux_beq
+ 26. Parameter Settings for User Entity Instance: fluxo_dados:FD|muxGenerico2:mux_jump
+ 27. Port Connectivity Checks: "fluxo_dados:FD|Registrador:PC"
+ 28. Port Connectivity Checks: "fluxo_dados:FD"
+ 29. Post-Synthesis Netlist Statistics for Top Partition
+ 30. Elapsed Time Per Partition
+ 31. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Thu Nov 14 16:58:49 2019       ;
+; Quartus Prime Version              ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
+; Revision Name                      ; mips                                        ;
+; Top-level Entity Name              ; mips                                        ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 4,332                                       ;
+;     Total combinational functions  ; 2,101                                       ;
+;     Dedicated logic registers      ; 2,334                                       ;
+; Total registers                    ; 2334                                        ;
+; Total pins                         ; 65                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP4CE115F29C7      ;                    ;
+; Top-level entity name                                                      ; mips               ; mips               ;
+; Family name                                                                ; Cyclone IV E       ; Cyclone V          ;
+; Maximum processors allowed for parallel compilation                        ; All                ;                    ;
+; VHDL Show LMF Mapping Messages                                             ; Off                ;                    ;
+; VHDL Version                                                               ; VHDL_2008          ; VHDL_1993          ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                              ; Enable             ; Enable             ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                                        ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.1%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                               ;
++----------------------------------+-----------------+-----------------+---------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                        ; Library ;
++----------------------------------+-----------------+-----------------+---------------------------------------------------------------------+---------+
+; ULA.vhd                          ; yes             ; User VHDL File  ; /home/lucasv/Downloads/mips-SemUC_restored/ULA.vhd                  ;         ;
+; UC_ULA.vhd                       ; yes             ; User VHDL File  ; /home/lucasv/Downloads/mips-SemUC_restored/UC_ULA.vhd               ;         ;
+; uc.vhd                           ; yes             ; User VHDL File  ; /home/lucasv/Downloads/mips-SemUC_restored/uc.vhd                   ;         ;
+; somador.vhd                      ; yes             ; User VHDL File  ; /home/lucasv/Downloads/mips-SemUC_restored/somador.vhd              ;         ;
+; soma4.vhd                        ; yes             ; User VHDL File  ; /home/lucasv/Downloads/mips-SemUC_restored/soma4.vhd                ;         ;
+; single_port_RAM.vhd              ; yes             ; User VHDL File  ; /home/lucasv/Downloads/mips-SemUC_restored/single_port_RAM.vhd      ;         ;
+; shift2_imediato.vhd              ; yes             ; User VHDL File  ; /home/lucasv/Downloads/mips-SemUC_restored/shift2_imediato.vhd      ;         ;
+; shift2.vhd                       ; yes             ; User VHDL File  ; /home/lucasv/Downloads/mips-SemUC_restored/shift2.vhd               ;         ;
+; ROM.vhd                          ; yes             ; User VHDL File  ; /home/lucasv/Downloads/mips-SemUC_restored/ROM.vhd                  ;         ;
+; Registrador.vhd                  ; yes             ; User VHDL File  ; /home/lucasv/Downloads/mips-SemUC_restored/Registrador.vhd          ;         ;
+; muxGenerico2.vhd                 ; yes             ; User VHDL File  ; /home/lucasv/Downloads/mips-SemUC_restored/muxGenerico2.vhd         ;         ;
+; mips.vhd                         ; yes             ; User VHDL File  ; /home/lucasv/Downloads/mips-SemUC_restored/mips.vhd                 ;         ;
+; fluxo_dados.vhd                  ; yes             ; User VHDL File  ; /home/lucasv/Downloads/mips-SemUC_restored/fluxo_dados.vhd          ;         ;
+; estendeSinalGenerico.vhd         ; yes             ; User VHDL File  ; /home/lucasv/Downloads/mips-SemUC_restored/estendeSinalGenerico.vhd ;         ;
+; constantesMIPS.vhd               ; yes             ; User VHDL File  ; /home/lucasv/Downloads/mips-SemUC_restored/constantesMIPS.vhd       ;         ;
+; bancoRegistradores.vhd           ; yes             ; User VHDL File  ; /home/lucasv/Downloads/mips-SemUC_restored/bancoRegistradores.vhd   ;         ;
++----------------------------------+-----------------+-----------------+---------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 4,332     ;
+;                                             ;           ;
+; Total combinational functions               ; 2101      ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 1805      ;
+;     -- 3 input functions                    ; 186       ;
+;     -- <=2 input functions                  ; 110       ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 1981      ;
+;     -- arithmetic mode                      ; 120       ;
+;                                             ;           ;
+; Total registers                             ; 2334      ;
+;     -- Dedicated logic registers            ; 2334      ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 65        ;
+;                                             ;           ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 2334      ;
+; Total fan-out                               ; 15108     ;
+; Average fan-out                             ; 3.31      ;
++---------------------------------------------+-----------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                     ;
++--------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------+--------------------+--------------+
+; Compilation Hierarchy Node           ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                               ; Entity Name        ; Library Name ;
++--------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------+--------------------+--------------+
+; |mips                                ; 2101 (0)            ; 2334 (0)                  ; 0           ; 0            ; 0       ; 0         ; 65   ; 0            ; |mips                                             ; mips               ; work         ;
+;    |fluxo_dados:FD|                  ; 2096 (11)           ; 2334 (0)                  ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mips|fluxo_dados:FD                              ; fluxo_dados        ; work         ;
+;       |ROM:ROM|                      ; 21 (21)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mips|fluxo_dados:FD|ROM:ROM                      ; ROM                ; work         ;
+;       |Registrador:PC|               ; 11 (11)             ; 30 (30)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mips|fluxo_dados:FD|Registrador:PC               ; Registrador        ; work         ;
+;       |UC_ULA:UCULA|                 ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mips|fluxo_dados:FD|UC_ULA:UCULA                 ; UC_ULA             ; work         ;
+;       |ULA:ULA|                      ; 199 (199)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mips|fluxo_dados:FD|ULA:ULA                      ; ULA                ; work         ;
+;       |bancoRegistradores:BR|        ; 280 (280)           ; 256 (256)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mips|fluxo_dados:FD|bancoRegistradores:BR        ; bancoRegistradores ; work         ;
+;       |muxGenerico2:mux_Banco_Ula|   ; 33 (33)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mips|fluxo_dados:FD|muxGenerico2:mux_Banco_Ula   ; muxGenerico2       ; work         ;
+;       |muxGenerico2:mux_Ula_Memoria| ; 32 (32)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mips|fluxo_dados:FD|muxGenerico2:mux_Ula_Memoria ; muxGenerico2       ; work         ;
+;       |muxGenerico2:mux_jump|        ; 15 (15)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mips|fluxo_dados:FD|muxGenerico2:mux_jump        ; muxGenerico2       ; work         ;
+;       |single_port_RAM:RAM|          ; 1428 (1428)         ; 2048 (2048)               ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mips|fluxo_dados:FD|single_port_RAM:RAM          ; single_port_RAM    ; work         ;
+;       |soma4:Somador|                ; 30 (30)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mips|fluxo_dados:FD|soma4:Somador                ; soma4              ; work         ;
+;       |somador:Somador_imediato|     ; 34 (34)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mips|fluxo_dados:FD|somador:Somador_imediato     ; somador            ; work         ;
+;    |uc:UC|                           ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |mips|uc:UC                                       ; uc                 ; work         ;
++--------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------+--------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++----------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                       ;
++----------------------------------------------------+-----------------------------------------------------+
+; Register name                                      ; Reason for Removal                                  ;
++----------------------------------------------------+-----------------------------------------------------+
+; fluxo_dados:FD|Registrador:PC|data_s[0]            ; Merged with fluxo_dados:FD|Registrador:PC|data_s[1] ;
+; fluxo_dados:FD|Registrador:PC|data_s[1]            ; Stuck at GND due to stuck port data_in              ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~166  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~167  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~168  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~169  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~170  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~171  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~172  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~173  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~174  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~175  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~176  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~177  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~178  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~179  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~180  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~181  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~182  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~183  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~184  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~185  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~186  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~187  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~188  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~189  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~190  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~191  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~192  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~193  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~194  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~195  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~196  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~197  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~198  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~199  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~200  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~201  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~202  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~203  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~204  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~205  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~206  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~207  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~208  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~209  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~210  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~211  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~212  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~213  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~214  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~215  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~216  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~217  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~218  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~219  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~220  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~221  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~222  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~223  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~224  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~225  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~226  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~227  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~228  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~229  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~230  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~231  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~232  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~233  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~234  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~235  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~236  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~237  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~238  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~239  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~240  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~241  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~242  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~243  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~244  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~245  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~246  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~247  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~248  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~249  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~250  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~251  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~252  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~253  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~254  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~255  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~256  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~257  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~258  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~259  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~260  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~261  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~262  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~263  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~264  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~265  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~266  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~267  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~268  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~269  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~270  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~271  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~272  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~273  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~274  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~275  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~276  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~277  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~278  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~279  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~280  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~281  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~282  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~283  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~284  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~285  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~286  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~287  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~288  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~289  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~290  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~291  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~292  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~293  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~422  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~423  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~424  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~425  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~426  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~427  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~428  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~429  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~430  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~431  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~432  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~433  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~434  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~435  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~436  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~437  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~438  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~439  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~440  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~441  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~442  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~443  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~444  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~445  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~446  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~447  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~448  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~449  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~450  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~451  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~452  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~453  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~454  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~455  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~456  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~457  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~458  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~459  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~460  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~461  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~462  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~463  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~464  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~465  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~466  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~467  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~468  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~469  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~470  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~471  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~472  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~473  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~474  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~475  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~476  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~477  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~478  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~479  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~480  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~481  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~482  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~483  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~484  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~485  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~486  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~487  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~488  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~489  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~490  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~491  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~492  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~493  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~494  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~495  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~496  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~497  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~498  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~499  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~500  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~501  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~502  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~503  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~504  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~505  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~506  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~507  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~508  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~509  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~510  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~511  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~512  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~513  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~514  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~515  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~516  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~517  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~518  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~519  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~520  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~521  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~522  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~523  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~524  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~525  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~526  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~527  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~528  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~529  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~530  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~531  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~532  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~533  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~534  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~535  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~536  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~537  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~538  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~539  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~540  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~541  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~542  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~543  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~544  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~545  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~546  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~547  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~548  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~549  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~550  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~551  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~552  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~553  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~554  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~555  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~556  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~557  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~558  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~559  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~560  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~561  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~562  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~563  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~564  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~565  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~566  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~567  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~568  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~569  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~570  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~571  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~572  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~573  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~574  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~575  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~576  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~577  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~578  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~579  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~580  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~581  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~582  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~583  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~584  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~585  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~586  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~587  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~588  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~589  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~590  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~591  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~592  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~593  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~594  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~595  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~596  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~597  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~598  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~599  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~600  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~601  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~602  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~603  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~604  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~605  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~606  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~607  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~608  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~609  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~610  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~611  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~612  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~613  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~614  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~615  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~616  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~617  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~618  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~619  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~620  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~621  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~622  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~623  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~624  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~625  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~626  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~627  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~628  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~629  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~630  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~631  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~632  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~633  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~634  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~635  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~636  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~637  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~638  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~639  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~640  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~641  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~642  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~643  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~644  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~645  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~646  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~647  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~648  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~649  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~650  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~651  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~652  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~653  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~654  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~655  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~656  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~657  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~658  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~659  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~660  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~661  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~662  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~663  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~664  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~665  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~666  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~667  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~668  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~669  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~670  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~671  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~672  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~673  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~674  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~675  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~676  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~677  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~678  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~679  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~680  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~681  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~682  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~683  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~684  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~685  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~686  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~687  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~688  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~689  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~690  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~691  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~692  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~693  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~694  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~695  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~696  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~697  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~698  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~699  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~700  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~701  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~702  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~703  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~704  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~705  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~706  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~707  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~708  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~709  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~710  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~711  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~712  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~713  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~714  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~715  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~716  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~717  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~718  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~719  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~720  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~721  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~722  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~723  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~724  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~725  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~726  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~727  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~728  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~729  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~730  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~731  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~732  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~733  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~734  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~735  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~736  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~737  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~738  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~739  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~740  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~741  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~742  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~743  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~744  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~745  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~746  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~747  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~748  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~749  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~750  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~751  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~752  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~753  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~754  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~755  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~756  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~757  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~758  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~759  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~760  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~761  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~762  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~763  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~764  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~765  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~766  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~767  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~768  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~769  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~770  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~771  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~772  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~773  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~774  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~775  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~776  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~777  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~778  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~779  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~780  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~781  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~782  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~783  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~784  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~785  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~786  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~787  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~788  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~789  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~790  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~791  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~792  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~793  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~794  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~795  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~796  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~797  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~798  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~799  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~800  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~801  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~802  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~803  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~804  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~805  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~806  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~807  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~808  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~809  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~810  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~811  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~812  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~813  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~814  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~815  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~816  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~817  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~818  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~819  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~820  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~821  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~822  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~823  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~824  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~825  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~826  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~827  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~828  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~829  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~830  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~831  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~832  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~833  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~834  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~835  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~836  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~837  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~838  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~839  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~840  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~841  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~842  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~843  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~844  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~845  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~846  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~847  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~848  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~849  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~850  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~851  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~852  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~853  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~854  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~855  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~856  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~857  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~858  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~859  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~860  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~861  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~862  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~863  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~864  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~865  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~866  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~867  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~868  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~869  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~870  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~871  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~872  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~873  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~874  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~875  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~876  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~877  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~878  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~879  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~880  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~881  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~882  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~883  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~884  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~885  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~886  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~887  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~888  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~889  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~890  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~891  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~892  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~893  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~894  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~895  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~896  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~897  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~898  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~899  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~900  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~901  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~902  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~903  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~904  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~905  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~906  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~907  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~908  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~909  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~910  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~911  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~912  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~913  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~914  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~915  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~916  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~917  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~918  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~919  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~920  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~921  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~922  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~923  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~924  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~925  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~926  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~927  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~928  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~929  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~930  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~931  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~932  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~933  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~934  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~935  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~936  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~937  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~938  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~939  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~940  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~941  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~942  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~943  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~944  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~945  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~946  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~947  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~948  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~949  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~950  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~951  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~952  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~953  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~954  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~955  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~956  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~957  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~958  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~959  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~960  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~961  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~962  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~963  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~964  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~965  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~966  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~967  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~968  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~969  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~970  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~971  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~972  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~973  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~974  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~975  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~976  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~977  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~978  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~979  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~980  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~981  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~982  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~983  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~984  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~985  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~986  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~987  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~988  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~989  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~990  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~991  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~992  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~993  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~994  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~995  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~996  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~997  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~998  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~999  ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1000 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1001 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1002 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1003 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1004 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1005 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1006 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1007 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1008 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1009 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1010 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1011 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1012 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1013 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1014 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1015 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1016 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1017 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1018 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1019 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1020 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1021 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1022 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1023 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1024 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1025 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1026 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1027 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1028 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1029 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1030 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1031 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1032 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1033 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1034 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1035 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1036 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1037 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1038 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1039 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1040 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1041 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1042 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1043 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1044 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1045 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1046 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1047 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1048 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1049 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1050 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1051 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1052 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1053 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1054 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1055 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1056 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1057 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1058 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1059 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1060 ; Lost fanout                                         ;
+; fluxo_dados:FD|bancoRegistradores:BR|bancoReg~1061 ; Lost fanout                                         ;
+; Total Number of Removed Registers = 770            ;                                                     ;
++----------------------------------------------------+-----------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 2334  ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 11    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 2304  ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |mips|fluxo_dados:FD|Registrador:PC|data_s[24] ;
+; 3:1                ; 21 bits   ; 42 LEs        ; 42 LEs               ; 0 LEs                  ; Yes        ; |mips|fluxo_dados:FD|Registrador:PC|data_s[15] ;
+; 8:1                ; 31 bits   ; 155 LEs       ; 93 LEs               ; 62 LEs                 ; No         ; |mips|fluxo_dados:FD|ULA:ULA|Mux15             ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 9 LEs                ; 0 LEs                  ; No         ; |mips|fluxo_dados:FD|UC_ULA:UCULA|ALUctr[0]    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
+
+
++-------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fluxo_dados:FD ;
++----------------+-------+------------------------------------+
+; Parameter Name ; Value ; Type                               ;
++----------------+-------+------------------------------------+
+; largurarom     ; 8     ; Signed Integer                     ;
++----------------+-------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fluxo_dados:FD|bancoRegistradores:BR ;
++---------------------+-------+-----------------------------------------------------+
+; Parameter Name      ; Value ; Type                                                ;
++---------------------+-------+-----------------------------------------------------+
+; larguradados        ; 32    ; Signed Integer                                      ;
+; larguraendbancoregs ; 5     ; Signed Integer                                      ;
++---------------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fluxo_dados:FD|ULA:ULA ;
++----------------+-------+--------------------------------------------+
+; Parameter Name ; Value ; Type                                       ;
++----------------+-------+--------------------------------------------+
+; num_bits       ; 32    ; Signed Integer                             ;
++----------------+-------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fluxo_dados:FD|Registrador:PC ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; num_bits       ; 32    ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fluxo_dados:FD|somador:Somador_imediato ;
++----------------+-------+-------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                        ;
++----------------+-------+-------------------------------------------------------------+
+; larguradados   ; 32    ; Signed Integer                                              ;
++----------------+-------+-------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fluxo_dados:FD|soma4:Somador ;
++----------------+-------+--------------------------------------------------+
+; Parameter Name ; Value ; Type                                             ;
++----------------+-------+--------------------------------------------------+
+; larguradados   ; 32    ; Signed Integer                                   ;
+; incremento     ; 4     ; Signed Integer                                   ;
++----------------+-------+--------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fluxo_dados:FD|ROM:ROM ;
++-----------------+-------+-------------------------------------------+
+; Parameter Name  ; Value ; Type                                      ;
++-----------------+-------+-------------------------------------------+
+; datawidth       ; 32    ; Signed Integer                            ;
+; addrwidth       ; 8     ; Signed Integer                            ;
+; memoryaddrwidth ; 6     ; Signed Integer                            ;
++-----------------+-------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fluxo_dados:FD|single_port_RAM:RAM ;
++-----------------+-------+-------------------------------------------------------+
+; Parameter Name  ; Value ; Type                                                  ;
++-----------------+-------+-------------------------------------------------------+
+; datawidth       ; 32    ; Signed Integer                                        ;
+; addrwidth       ; 32    ; Signed Integer                                        ;
+; memoryaddrwidth ; 6     ; Signed Integer                                        ;
++-----------------+-------+-------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fluxo_dados:FD|estendeSinalGenerico:extensor ;
++--------------------+-------+--------------------------------------------------------------+
+; Parameter Name     ; Value ; Type                                                         ;
++--------------------+-------+--------------------------------------------------------------+
+; larguradadoentrada ; 16    ; Signed Integer                                               ;
+; larguradadosaida   ; 32    ; Signed Integer                                               ;
++--------------------+-------+--------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fluxo_dados:FD|shift2_imediato:shift ;
++----------------+-------+----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                     ;
++----------------+-------+----------------------------------------------------------+
+; larguradado    ; 32    ; Signed Integer                                           ;
++----------------+-------+----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fluxo_dados:FD|shift2:shift_jump ;
++----------------+-------+------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                 ;
++----------------+-------+------------------------------------------------------+
+; larguradado    ; 26    ; Signed Integer                                       ;
++----------------+-------+------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fluxo_dados:FD|muxGenerico2:mux_Ula_Memoria ;
++----------------+-------+-----------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                            ;
++----------------+-------+-----------------------------------------------------------------+
+; larguradados   ; 32    ; Signed Integer                                                  ;
++----------------+-------+-----------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fluxo_dados:FD|muxGenerico2:mux_Rd_Rt ;
++----------------+-------+-----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                      ;
++----------------+-------+-----------------------------------------------------------+
+; larguradados   ; 5     ; Signed Integer                                            ;
++----------------+-------+-----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fluxo_dados:FD|muxGenerico2:mux_Banco_Ula ;
++----------------+-------+---------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                          ;
++----------------+-------+---------------------------------------------------------------+
+; larguradados   ; 32    ; Signed Integer                                                ;
++----------------+-------+---------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fluxo_dados:FD|muxGenerico2:mux_beq ;
++----------------+-------+---------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                    ;
++----------------+-------+---------------------------------------------------------+
+; larguradados   ; 32    ; Signed Integer                                          ;
++----------------+-------+---------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fluxo_dados:FD|muxGenerico2:mux_jump ;
++----------------+-------+----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                     ;
++----------------+-------+----------------------------------------------------------+
+; larguradados   ; 32    ; Signed Integer                                           ;
++----------------+-------+----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "fluxo_dados:FD|Registrador:PC" ;
++--------+-------+----------+-------------------------------+
+; Port   ; Type  ; Severity ; Details                       ;
++--------+-------+----------+-------------------------------+
+; enable ; Input ; Info     ; Stuck at VCC                  ;
+; reset  ; Input ; Info     ; Stuck at VCC                  ;
++--------+-------+----------+-------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "fluxo_dados:FD"                                                                                 ;
++------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port             ; Type   ; Severity ; Details                                                                             ;
++------------------+--------+----------+-------------------------------------------------------------------------------------+
+; instrucao[25..0] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 65                          ;
+; cycloneiii_ff         ; 2334                        ;
+;     ENA               ; 2304                        ;
+;     SLD               ; 11                          ;
+;     plain             ; 19                          ;
+; cycloneiii_lcell_comb ; 2102                        ;
+;     arith             ; 120                         ;
+;         2 data inputs ; 29                          ;
+;         3 data inputs ; 91                          ;
+;     normal            ; 1982                        ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 11                          ;
+;         2 data inputs ; 70                          ;
+;         3 data inputs ; 95                          ;
+;         4 data inputs ; 1805                        ;
+;                       ;                             ;
+; Max LUT depth         ; 19.70                       ;
+; Average LUT depth     ; 11.17                       ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:06     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+    Info: Processing started: Thu Nov 14 16:58:29 2019
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off mips -c mips
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file ULA.vhd
+    Info (12022): Found design unit 1: ULA-behv File: /home/lucasv/Downloads/mips-SemUC_restored/ULA.vhd Line: 24
+    Info (12023): Found entity 1: ULA File: /home/lucasv/Downloads/mips-SemUC_restored/ULA.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file UC_ULA.vhd
+    Info (12022): Found design unit 1: UC_ULA-bhv File: /home/lucasv/Downloads/mips-SemUC_restored/UC_ULA.vhd Line: 18
+    Info (12023): Found entity 1: UC_ULA File: /home/lucasv/Downloads/mips-SemUC_restored/UC_ULA.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file uc.vhd
+    Info (12022): Found design unit 1: uc-bhv File: /home/lucasv/Downloads/mips-SemUC_restored/uc.vhd Line: 17
+    Info (12023): Found entity 1: uc File: /home/lucasv/Downloads/mips-SemUC_restored/uc.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file somador.vhd
+    Info (12022): Found design unit 1: somador-comportamento File: /home/lucasv/Downloads/mips-SemUC_restored/somador.vhd Line: 18
+    Info (12023): Found entity 1: somador File: /home/lucasv/Downloads/mips-SemUC_restored/somador.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file soma4.vhd
+    Info (12022): Found design unit 1: soma4-comportamento File: /home/lucasv/Downloads/mips-SemUC_restored/soma4.vhd Line: 18
+    Info (12023): Found entity 1: soma4 File: /home/lucasv/Downloads/mips-SemUC_restored/soma4.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file single_port_RAM.vhd
+    Info (12022): Found design unit 1: single_port_RAM-rtl File: /home/lucasv/Downloads/mips-SemUC_restored/single_port_RAM.vhd Line: 20
+    Info (12023): Found entity 1: single_port_RAM File: /home/lucasv/Downloads/mips-SemUC_restored/single_port_RAM.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file shift2_imediato.vhd
+    Info (12022): Found design unit 1: shift2_imediato-comportamento File: /home/lucasv/Downloads/mips-SemUC_restored/shift2_imediato.vhd Line: 16
+    Info (12023): Found entity 1: shift2_imediato File: /home/lucasv/Downloads/mips-SemUC_restored/shift2_imediato.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file shift2.vhd
+    Info (12022): Found design unit 1: shift2-comportamento File: /home/lucasv/Downloads/mips-SemUC_restored/shift2.vhd Line: 16
+    Info (12023): Found entity 1: shift2 File: /home/lucasv/Downloads/mips-SemUC_restored/shift2.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file ROM.vhd
+    Info (12022): Found design unit 1: ROM-assincrona File: /home/lucasv/Downloads/mips-SemUC_restored/ROM.vhd Line: 15
+    Info (12023): Found entity 1: ROM File: /home/lucasv/Downloads/mips-SemUC_restored/ROM.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file Registrador.vhd
+    Info (12022): Found design unit 1: Registrador-rtl File: /home/lucasv/Downloads/mips-SemUC_restored/Registrador.vhd Line: 26
+    Info (12023): Found entity 1: Registrador File: /home/lucasv/Downloads/mips-SemUC_restored/Registrador.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file muxGenerico2.vhd
+    Info (12022): Found design unit 1: muxGenerico2-comportamento File: /home/lucasv/Downloads/mips-SemUC_restored/muxGenerico2.vhd Line: 17
+    Info (12023): Found entity 1: muxGenerico2 File: /home/lucasv/Downloads/mips-SemUC_restored/muxGenerico2.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file mips.vhd
+    Info (12022): Found design unit 1: mips-estrutural File: /home/lucasv/Downloads/mips-SemUC_restored/mips.vhd Line: 18
+    Info (12023): Found entity 1: mips File: /home/lucasv/Downloads/mips-SemUC_restored/mips.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file fluxo_dados.vhd
+    Info (12022): Found design unit 1: fluxo_dados-estrutural File: /home/lucasv/Downloads/mips-SemUC_restored/fluxo_dados.vhd Line: 23
+    Info (12023): Found entity 1: fluxo_dados File: /home/lucasv/Downloads/mips-SemUC_restored/fluxo_dados.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file estendeSinalGenerico.vhd
+    Info (12022): Found design unit 1: estendeSinalGenerico-comportamento File: /home/lucasv/Downloads/mips-SemUC_restored/estendeSinalGenerico.vhd Line: 19
+    Info (12023): Found entity 1: estendeSinalGenerico File: /home/lucasv/Downloads/mips-SemUC_restored/estendeSinalGenerico.vhd Line: 4
+Info (12021): Found 1 design units, including 0 entities, in source file constantesMIPS.vhd
+    Info (12022): Found design unit 1: constantesMIPS File: /home/lucasv/Downloads/mips-SemUC_restored/constantesMIPS.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file clock_generator.vhd
+    Info (12022): Found design unit 1: clock_generator-test File: /home/lucasv/Downloads/mips-SemUC_restored/clock_generator.vhd Line: 18
+    Info (12023): Found entity 1: clock_generator File: /home/lucasv/Downloads/mips-SemUC_restored/clock_generator.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file bancoRegistradores.vhd
+    Info (12022): Found design unit 1: bancoRegistradores-rtl File: /home/lucasv/Downloads/mips-SemUC_restored/bancoRegistradores.vhd Line: 30
+    Info (12023): Found entity 1: bancoRegistradores File: /home/lucasv/Downloads/mips-SemUC_restored/bancoRegistradores.vhd Line: 6
+Info (12127): Elaborating entity "mips" for the top level hierarchy
+Info (12128): Elaborating entity "fluxo_dados" for hierarchy "fluxo_dados:FD" File: /home/lucasv/Downloads/mips-SemUC_restored/mips.vhd Line: 35
+Info (12128): Elaborating entity "bancoRegistradores" for hierarchy "fluxo_dados:FD|bancoRegistradores:BR" File: /home/lucasv/Downloads/mips-SemUC_restored/fluxo_dados.vhd Line: 89
+Info (12128): Elaborating entity "ULA" for hierarchy "fluxo_dados:FD|ULA:ULA" File: /home/lucasv/Downloads/mips-SemUC_restored/fluxo_dados.vhd Line: 106
+Info (12128): Elaborating entity "UC_ULA" for hierarchy "fluxo_dados:FD|UC_ULA:UCULA" File: /home/lucasv/Downloads/mips-SemUC_restored/fluxo_dados.vhd Line: 118
+Info (12128): Elaborating entity "Registrador" for hierarchy "fluxo_dados:FD|Registrador:PC" File: /home/lucasv/Downloads/mips-SemUC_restored/fluxo_dados.vhd Line: 127
+Info (12128): Elaborating entity "somador" for hierarchy "fluxo_dados:FD|somador:Somador_imediato" File: /home/lucasv/Downloads/mips-SemUC_restored/fluxo_dados.vhd Line: 139
+Info (12128): Elaborating entity "soma4" for hierarchy "fluxo_dados:FD|soma4:Somador" File: /home/lucasv/Downloads/mips-SemUC_restored/fluxo_dados.vhd Line: 149
+Info (12128): Elaborating entity "ROM" for hierarchy "fluxo_dados:FD|ROM:ROM" File: /home/lucasv/Downloads/mips-SemUC_restored/fluxo_dados.vhd Line: 159
+Info (12128): Elaborating entity "single_port_RAM" for hierarchy "fluxo_dados:FD|single_port_RAM:RAM" File: /home/lucasv/Downloads/mips-SemUC_restored/fluxo_dados.vhd Line: 170
+Info (12128): Elaborating entity "estendeSinalGenerico" for hierarchy "fluxo_dados:FD|estendeSinalGenerico:extensor" File: /home/lucasv/Downloads/mips-SemUC_restored/fluxo_dados.vhd Line: 185
+Info (12128): Elaborating entity "shift2_imediato" for hierarchy "fluxo_dados:FD|shift2_imediato:shift" File: /home/lucasv/Downloads/mips-SemUC_restored/fluxo_dados.vhd Line: 195
+Info (12128): Elaborating entity "shift2" for hierarchy "fluxo_dados:FD|shift2:shift_jump" File: /home/lucasv/Downloads/mips-SemUC_restored/fluxo_dados.vhd Line: 205
+Info (12128): Elaborating entity "muxGenerico2" for hierarchy "fluxo_dados:FD|muxGenerico2:mux_Ula_Memoria" File: /home/lucasv/Downloads/mips-SemUC_restored/fluxo_dados.vhd Line: 215
+Info (12128): Elaborating entity "muxGenerico2" for hierarchy "fluxo_dados:FD|muxGenerico2:mux_Rd_Rt" File: /home/lucasv/Downloads/mips-SemUC_restored/fluxo_dados.vhd Line: 226
+Info (12128): Elaborating entity "uc" for hierarchy "uc:UC" File: /home/lucasv/Downloads/mips-SemUC_restored/mips.vhd Line: 45
+Info (276014): Found 2 instances of uninferred RAM logic
+    Info (276007): RAM logic "fluxo_dados:FD|bancoRegistradores:BR|bancoReg" is uninferred due to asynchronous read logic File: /home/lucasv/Downloads/mips-SemUC_restored/bancoRegistradores.vhd Line: 56
+    Info (276007): RAM logic "fluxo_dados:FD|single_port_RAM:RAM|ram" is uninferred due to asynchronous read logic File: /home/lucasv/Downloads/mips-SemUC_restored/single_port_RAM.vhd Line: 23
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "out_pc[0]" is stuck at GND File: /home/lucasv/Downloads/mips-SemUC_restored/mips.vhd Line: 14
+    Warning (13410): Pin "out_pc[1]" is stuck at GND File: /home/lucasv/Downloads/mips-SemUC_restored/mips.vhd Line: 14
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 768 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 4461 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 1 input pins
+    Info (21059): Implemented 64 output pins
+    Info (21061): Implemented 4396 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 3 warnings
+    Info: Peak virtual memory: 1015 megabytes
+    Info: Processing ended: Thu Nov 14 16:58:49 2019
+    Info: Elapsed time: 00:00:20
+    Info: Total CPU time (on all processors): 00:00:32
+
+

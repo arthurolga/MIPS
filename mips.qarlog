@@ -1,0 +1,32 @@
+Quartus Prime Archive log --	/home/lucasv/Downloads/mips-SemUC_restored/mips.qarlog
+
+Archive:	/home/lucasv/Downloads/mips-SemUC_restored/mips.qar
+Date:		Thu Nov 14 17:07:01 2019
+Quartus Prime		17.1.0 Build 590 10/25/2017 SJ Lite Edition
+
+	=========== Files Selected: ===========
+/home/lucasv/Downloads/mips-SemUC_restored/ROM.vhd
+/home/lucasv/Downloads/mips-SemUC_restored/Registrador.vhd
+/home/lucasv/Downloads/mips-SemUC_restored/UC_ULA.vhd
+/home/lucasv/Downloads/mips-SemUC_restored/ULA.vhd
+/home/lucasv/Downloads/mips-SemUC_restored/Waveform.vwf
+/home/lucasv/Downloads/mips-SemUC_restored/assignment_defaults.qdf
+/home/lucasv/Downloads/mips-SemUC_restored/bancoRegistradores.vhd
+/home/lucasv/Downloads/mips-SemUC_restored/clock_generator.vhd
+/home/lucasv/Downloads/mips-SemUC_restored/constantesMIPS.vhd
+/home/lucasv/Downloads/mips-SemUC_restored/estendeSinalGenerico.vhd
+/home/lucasv/Downloads/mips-SemUC_restored/fluxo_dados.vhd
+/home/lucasv/Downloads/mips-SemUC_restored/mips.qpf
+/home/lucasv/Downloads/mips-SemUC_restored/mips.qsf
+/home/lucasv/Downloads/mips-SemUC_restored/mips.vhd
+/home/lucasv/Downloads/mips-SemUC_restored/muxGenerico2.vhd
+/home/lucasv/Downloads/mips-SemUC_restored/shift2.vhd
+/home/lucasv/Downloads/mips-SemUC_restored/shift2_imediato.vhd
+/home/lucasv/Downloads/mips-SemUC_restored/single_port_RAM.vhd
+/home/lucasv/Downloads/mips-SemUC_restored/soma4.vhd
+/home/lucasv/Downloads/mips-SemUC_restored/somador.vhd
+/home/lucasv/Downloads/mips-SemUC_restored/uc.vhd
+	======= Total: 21 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

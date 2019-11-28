@@ -54,6 +54,10 @@ architecture estrutural of fluxo_dados is
      
     -- Controle da ULA
     signal ULActr : std_logic_vector(CTRL_ALU_WIDTH-1 downto 0);
+	 
+	 -- Registradores de Controles
+	 signal in_ifid, out_ifid : std_LOGIC_VECTOR(64-1 downto 0);
+	 signal rinstruction : std_LOGIC_VECTOR(DATA_WIDTH-1 downto 0);
 
     -- Codigos da palavra de controle:
     alias ULAop             : std_logic_vector(ALU_OP_WIDTH-1 downto 0) is pontosDeControle(10 downto 8);
@@ -67,20 +71,38 @@ architecture estrutural of fluxo_dados is
     alias sel_mux_jump      : std_logic is pontosDeControle(0);
 
     -- Parsing da instrucao
-    alias RS_addr   : std_logic_vector(REGBANK_ADDR_WIDTH-1 downto 0) is instrucao_s(25 downto 21);
-    alias RT_addr   : std_logic_vector(REGBANK_ADDR_WIDTH-1 downto 0) is instrucao_s(20 downto 16);
-    alias RD_addr   : std_logic_vector(REGBANK_ADDR_WIDTH-1 downto 0) is instrucao_s(15 downto 11);
-    alias funct     : std_logic_vector(FUNCT_WIDTH-1 downto 0) is  instrucao_s(5 DOWNTO 0);
-    alias imediato  : std_logic_vector(15 downto 0) is instrucao_s(15 downto 0);
+    alias RS_addr   : std_logic_vector(REGBANK_ADDR_WIDTH-1 downto 0) is rinstruction(25 downto 21);
+    alias RT_addr   : std_logic_vector(REGBANK_ADDR_WIDTH-1 downto 0) is rinstruction(20 downto 16);
+    alias RD_addr   : std_logic_vector(REGBANK_ADDR_WIDTH-1 downto 0) is rinstruction(15 downto 11);
+    alias funct     : std_logic_vector(FUNCT_WIDTH-1 downto 0) is  rinstruction(5 DOWNTO 0);
+    alias imediato  : std_logic_vector(15 downto 0) is rinstruction(15 downto 0);
+	 
+	 
 
 begin
 
-    instrucao <= instrucao_s;
+    instrucao <= rinstruction;
 	 
 	 out_ula <= saida_ula;
 	 out_pc  <= pc_s;
 
     sel_mux_beq <= sel_beq AND Z_out;
+	 
+	 -- Reg IF/ID
+	  in_ifid <=  PC_mais_4 & instrucao_s;
+	  IFID: entity work.Registrador
+        generic map (
+            NUM_BITS => 64
+        )
+        port map (
+            clk 		=> clk,
+				enable   => '1',
+				reset    => '1',
+				data_in  => in_ifid,
+				data_out => out_ifid
+				
+        );
+	 
 
     -- Ajuste do PC para jump (concatena com imediato multiplicado por 4)
     PC_4_concat_imed <= PC_mais_4(31 downto 28) & saida_shift_jump;
@@ -114,6 +136,7 @@ begin
             C   => saida_ula,
             Z   => Z_out
         );
+		  
     
     UCULA : entity work.uc_ula 
         port map
@@ -207,7 +230,7 @@ begin
             larguraDado => 26
         )
 		port map (
-            shift_IN  => instrucao_s(25 downto 0),
+            shift_IN  => rinstruction(25 downto 0),
             shift_OUT => saida_shift_jump
         );
     

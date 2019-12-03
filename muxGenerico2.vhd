@@ -18,12 +18,13 @@ architecture comportamento of muxGenerico2 is
 begin
   -- Para sintetizar lógica combinacional usando um processo,
   --  todas as entradas do modulo devem aparecer na lista de sensibilidade.
-    process(entradaA, entradaB, seletor) is
-    begin
-        if(seletor='0') then
-            saida <= entradaA;
-        else
-            saida <= entradaB;
-        end if;
-    end process;
+--    process(entradaA, entradaB, seletor) is
+--    begin
+--        if(seletor='0') then
+--            saida <= entradaA;
+--        else
+--            saida <= entradaB;
+--        end if;
+		saida <= entradaA when seletor='0' else
+					entradaB;
 end architecture;

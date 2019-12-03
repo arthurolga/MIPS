@@ -1,11 +1,11 @@
 onerror {exit -code 1}
 vlib work
 vcom -work work mips.vho
-vcom -work work Waveform.vwf.vht
-vsim -novopt -c -t 1ps -L cycloneive -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.mips_vhd_vec_tst
+vcom -work work Waveform7.vwf.vht
+vsim -novopt -c -t 1ps -L cycloneive -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.fluxo_dados_vhd_vec_tst
 vcd file -direction mips.msim.vcd
-vcd add -internal mips_vhd_vec_tst/*
-vcd add -internal mips_vhd_vec_tst/i1/*
+vcd add -internal fluxo_dados_vhd_vec_tst/*
+vcd add -internal fluxo_dados_vhd_vec_tst/i1/*
 proc simTimestamp {} {
     echo "Simulation time: $::now ps"
     if { [string equal running [runStatus]] } {
@@ -15,3 +15,6 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
+
+
+

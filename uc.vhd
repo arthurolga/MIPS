@@ -26,16 +26,14 @@ begin
 --    alias sel_mux_banco_ula : std_logic is pontosDeControle(2);-- imed
 --    alias sel_beq           : std_logic is pontosDeControle(1);
 --    alias sel_mux_jump      : std_logic is pontosDeControle(0);
-    process(opcode)
-	 begin
-	 case opcode is
-		when opCodeTipoR => pontosDeControle <= "00010001000"; --000
-		when 	  opCodeLW => pontosDeControle <= "00110110100"; --001
-		when 	  opCodeSW => pontosDeControle <= "01001000100"; --010
-		when 	 opCodeBEQ => pontosDeControle <= "01100000010"; --011
-		when opCodeTipoJ => pontosDeControle <= "00000000001"; --jmp
-		when others => pontosDeControle <= "00000000000";
-	 end case;
-	 end process;
+--    process(opcode)	 
+	 
+		pontosDeControle <= "00010001000" when opcode = opCodeTipoR else --r
+								  "00110110100" when opcode = opCodeLW else --lw
+		                    "01001000100" when opcode = opCodeSW else --sw
+							     "01100000010" when opcode = opCodeBEQ else --beq
+								  "00000000001" when opcode = opCodeTipoJ else --j
+								  "00000000000";
+		
 
 end bhv;

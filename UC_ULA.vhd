@@ -22,6 +22,7 @@ begin
 	-- LW 001
 	-- STR 010
 	-- jmp 011
+	-- ulaR <= 
 	ALUctr <= ulaCtrlAdd WHEN (ALUop=readFunctULA AND funct=functADD) ELSE -- ADD 0010
 				 ulaCtrlSub WHEN (ALUop=readFunctULA AND funct=functSUB) ELSE -- SUB 0110
 				 ulaCtrlAnd WHEN (ALUop=readFunctULA AND funct=functAND) ELSE -- AND 

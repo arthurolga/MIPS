@@ -14,15 +14,9 @@ entity mips is
 		  out_ula					: OUT std_logic_vector(DATA_WIDTH-1 downto 0);
 		  out_pc						: OUT std_logic_vector(DATA_WIDTH-1 downto 0);
 		  KEY									: IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-		  LEDR								: OUT STD_LOGIC_VECTOR(10 DOWNTO 0); 
-		  HEX0     : out std_logic_vector(6 downto 0):= "1000000";
-		  HEX1     : out std_logic_vector(6 downto 0):= "1000000";
-		  HEX2     : out std_logic_vector(6 downto 0):= "1000000";
-		  HEX3     : out std_logic_vector(6 downto 0):= "1000000";
-		  HEX4     : out std_logic_vector(6 downto 0):= "1000000";
-		  HEX5     : out std_logic_vector(6 downto 0):= "1000000";
-		  HEX6     : out std_logic_vector(6 downto 0):= "1000000";
-		  HEX7     : out std_logic_vector(6 downto 0):= "1000000"
+		  LEDR								: OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
+		  LEDG								: OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+		  HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7 : out std_logic_vector(6 downto 0)
     );
 end entity;
 
@@ -37,12 +31,14 @@ architecture estrutural of mips is
 	 
 	 signal saida_pc : std_logic_vector(DATA_WIDTH-1 downto 0);
 	 signal saida_ula : std_logic_vector(DATA_WIDTH-1 downto 0);
+	 signal entrada_a_ula : std_logic_vector(DATA_WIDTH-1 downto 0);
+	 signal entrada_b_ula : std_logic_vector(DATA_WIDTH-1 downto 0);
 
 
     -- Sinal de clock auxiliar para simulação
     -- signal clk  : STD_LOGIC;
 
-    alias opcode : std_logic_vector(OPCODE_WIDTH-1 downto 0) is instrucao(31 DOWNTO 26);
+    -- alias opcode : std_logic_vector(OPCODE_WIDTH-1 downto 0) is instrucao(31 DOWNTO 26);
 begin
 
     -- CLOCK generator auxiliar para simulação
@@ -51,11 +47,13 @@ begin
     FD : entity work.fluxo_dados 
 	port map
 	(
-        clk	                    => clk,
-        pontosDeControle        => pontosDeControle,
+        clk	                    => clk,-- NOT KEY(0),
+        -- pontosDeControle        => pontosDeControle,
         instrucao               => instrucao,
 		  out_pc						  => saida_pc,
-		  out_ula					  => saida_ula
+		  out_ula					  => saida_ula,
+		  out_entradaAula				  => entrada_a_ula,
+		  out_entradaBula				  => entrada_b_ula
     );
 	 
 	 out_pc  <= saida_pc;
@@ -63,21 +61,31 @@ begin
 	 
 	 
 
-    UC : entity work.uc 
-	port map
-	(
-        opcode              	=> opcode,
-        pontosDeControle    	=> pontosDeControle
-    );
 	 
 	 
 	 --- DISPLAYSS
 	 
-	 LEDR <= saida_pc(10 downto 0);
+	  LEDG <= saida_pc(7 downto 0);
 	 
 	 
-	 dhex0: entity work.conversorHex7Seg port map(
+
+	
+	dhex7: entity work.conversorHex7Seg port map(
+		  	dadoHex => entrada_a_ula(3 downto 0),
+			saida7seg => HEX7
+	);
+	
+	dhex6: entity work.conversorHex7Seg port map(
+		  	dadoHex => entrada_b_ula(3 downto 0),
+			saida7seg => HEX6
+	);
+	dhex5: entity work.conversorHex7Seg port map(
 		  	dadoHex => saida_ula(3 downto 0),
+			saida7seg => HEX5
+	);
+	
+	dhex0: entity work.conversorHex7Seg port map(
+		  	dadoHex => instrucao(3 downto 0),
 			saida7seg => HEX0
 	);
 	 

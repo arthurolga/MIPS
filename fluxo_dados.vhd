@@ -13,10 +13,20 @@ entity fluxo_dados is
 	port
     (
         clk			            : IN STD_LOGIC;
-        pontosDeControle        : IN STD_LOGIC_VECTOR(CONTROLWORD_WIDTH-1 DOWNTO 0);
+        -- pontosDeControle        : IN STD_LOGIC_VECTOR(CONTROLWORD_WIDTH-1 DOWNTO 0);
         instrucao               : OUT STD_LOGIC_VECTOR(DATA_WIDTH-1 DOWNTO 0);
 		  out_ula					: OUT std_logic_vector(DATA_WIDTH-1 downto 0);
-		  out_pc						: OUT std_logic_vector(DATA_WIDTH-1 downto 0)
+		  out_entradaAula					: OUT std_logic_vector(DATA_WIDTH-1 downto 0);
+		  out_entradaBula					: OUT std_logic_vector(DATA_WIDTH-1 downto 0);
+		  out_ULAop                   : OUT std_LOGIC_VECTOR(ALU_OP_WIDTH-1 downto 0);
+		  out_selecionaULA            : OUT std_LOGIC_VECTOR(4-1 downto 0);
+		  out_pc						: OUT std_logic_vector(DATA_WIDTH-1 downto 0);
+		  out_MEMWB_mem					: OUT std_LOGIC_VECTOR(DATA_WIDTH-1 downto 0);
+		  out_MEMWB_ula					: OUT std_LOGIC_VECTOR(DATA_WIDTH-1 downto 0);
+		  out_select_mem_ula				: OUT std_LOGIC;
+		  out_WB_escreve_rc				: OUT std_LOGIC;
+		  out_enderecoEscrita         : OUT std_LOGIC_VECTOR(REGBANK_ADDR_WIDTH-1 downto 0)
+
     );
 end entity;
 
@@ -57,20 +67,21 @@ architecture estrutural of fluxo_dados is
 	 
 	 -- Registradores de Controles
 	 signal in_ifid, out_ifid : std_LOGIC_VECTOR(64-1 downto 0);
-	 signal rinstruction : std_LOGIC_VECTOR(DATA_WIDTH-1 downto 0);
+--	 signal IFID_instrucao : std_LOGIC_VECTOR(DATA_WIDTH-1 downto 0);
 	 
 	 alias soma4ifid : std_logic_vector(DATA_WIDTH-1 downto 0) is out_ifid(64-1 downto 32);
+	 alias IFID_instrucao : std_LOGIC_VECTOR(DATA_WIDTH-1 downto 0) is out_ifid(31 downto 0);
 	 
 	 
-	 signal in_idex, out_idex : std_LOGIC_VECTOR(149-1 downto 0);
+	 signal in_idex, out_idex : std_LOGIC_VECTOR(148-1 downto 0);
 	 -- EX
 	 alias EX_sel_rd_rt :  std_logic is out_idex(142);
 	 alias EX_ULAop :  std_logic_VECTOR is out_idex(141 downto 139);
 	 alias EX_sel_banco_ula :  std_logic is out_idex(138);
 	 
 	 
-	 alias IDEX_WB :  std_logic_vector(2-1 downto 0) is out_idex(148 downto 147);
-	 alias IDEX_M :  std_logic_vector(4-1 downto 0) is out_idex(146 downto 143);
+	 alias IDEX_WB :  std_logic_vector(2-1 downto 0) is out_idex(147 downto 146);
+	 alias IDEX_M :  std_logic_vector(3-1 downto 0) is out_idex(145 downto 143);
 	 alias IDEX_pcmais4 : std_logic_vector(DATA_WIDTH-1 downto 0) is out_idex(137 downto 106);
 	 alias IDEX_ra :  std_logic_vector(DATA_WIDTH-1 downto 0) is out_idex(105 downto 74);
 	 alias IDEX_rb :  std_logic_vector(DATA_WIDTH-1 downto 0) is out_idex(73 downto 42);
@@ -79,15 +90,15 @@ architecture estrutural of fluxo_dados is
 	 alias IDEX_rd :  std_logic_vector(5-1 downto 0) is out_idex(4 downto 0);
 	 
 	 
-	 signal in_exmem, out_exmem : std_LOGIC_VECTOR(108-1 downto 0);
+	 signal in_exmem, out_exmem : std_LOGIC_VECTOR(107-1 downto 0);
 	 
 	 -- M
-	 alias M_sel_jump : std_LOGIC is out_exmem(105);
+	 -- alias M_sel_jump : std_LOGIC is out_exmem(105);
 	 alias M_sel_beq : std_LOGIC is out_exmem(104);
 	 alias M_leitura_RAM : std_LOGIC is out_exmem(103);
 	 alias M_escreve_RAM : std_LOGIC is out_exmem(102);
 	 
-	 alias EXMEM_WB :  std_logic_vector(2-1 downto 0) is out_exmem(107 downto 106);
+	 alias EXMEM_WB :  std_logic_vector(2-1 downto 0) is out_exmem(106 downto 105);
 	 alias EXMEM_PC_mais_4 :  std_logic_vector(DATA_WIDTH-1 downto 0) is out_exmem(101 downto 70);
 	 alias EXMEM_Z_out :  std_logic is out_exmem(69);
 	 alias EXMEM_saida_ula :  std_logic_vector(DATA_WIDTH-1 downto 0) is out_exmem(68 downto 37);
@@ -107,33 +118,40 @@ architecture estrutural of fluxo_dados is
 	 
 
     -- Codigos da palavra de controle:
-    alias ULAop             : std_logic_vector(ALU_OP_WIDTH-1 downto 0) is pontosDeControle(10 downto 8); -- EX
-    alias escreve_RC        : std_logic is pontosDeControle(7); -- wb
-    alias escreve_RAM       : std_logic is pontosDeControle(6); -- M
-    alias leitura_RAM       : std_logic is pontosDeControle(5); -- M
-    alias sel_mux_ula_mem   : std_logic is pontosDeControle(4); -- wb
-    alias sel_mux_rd_rt     : std_logic is pontosDeControle(3); -- ex
-    alias sel_mux_banco_ula : std_logic is pontosDeControle(2); -- ex
-    alias sel_beq           : std_logic is pontosDeControle(1); -- M
-    alias sel_mux_jump      : std_logic is pontosDeControle(0); -- M
+	 signal pontosDeControle_s : std_logic_vector(10 downto 0);
+    alias ULAop             : std_logic_vector(ALU_OP_WIDTH-1 downto 0) is pontosDeControle_s(10 downto 8); -- EX
+    alias escreve_RC        : std_logic is pontosDeControle_s(7); -- wb
+    alias escreve_RAM       : std_logic is pontosDeControle_s(6); -- M
+    alias leitura_RAM       : std_logic is pontosDeControle_s(5); -- M
+    alias sel_mux_ula_mem   : std_logic is pontosDeControle_s(4); -- wb
+    alias sel_mux_rd_rt     : std_logic is pontosDeControle_s(3); -- ex
+    alias sel_mux_banco_ula : std_logic is pontosDeControle_s(2); -- ex
+    alias sel_beq           : std_logic is pontosDeControle_s(1); -- M
+    alias sel_mux_jump      : std_logic is pontosDeControle_s(0); -- M
 
     -- Parsing da instrucao
-    alias RS_addr   : std_logic_vector(REGBANK_ADDR_WIDTH-1 downto 0) is rinstruction(25 downto 21);
-    alias RT_addr   : std_logic_vector(REGBANK_ADDR_WIDTH-1 downto 0) is rinstruction(20 downto 16);
-    alias RD_addr   : std_logic_vector(REGBANK_ADDR_WIDTH-1 downto 0) is rinstruction(15 downto 11);
-    alias funct     : std_logic_vector(FUNCT_WIDTH-1 downto 0) is  rinstruction(5 DOWNTO 0);
-    alias imediato  : std_logic_vector(15 downto 0) is rinstruction(15 downto 0);
+    alias RS_addr   : std_logic_vector(REGBANK_ADDR_WIDTH-1 downto 0) is IFID_instrucao(25 downto 21);
+    alias RT_addr   : std_logic_vector(REGBANK_ADDR_WIDTH-1 downto 0) is IFID_instrucao(20 downto 16);
+    alias RD_addr   : std_logic_vector(REGBANK_ADDR_WIDTH-1 downto 0) is IFID_instrucao(15 downto 11);
+    -- alias funct     : std_logic_vector(FUNCT_WIDTH-1 downto 0) is  IFID_instrucao(5 DOWNTO 0);
+    alias imediato  : std_logic_vector(15 downto 0) is IFID_instrucao(15 downto 0);
+	 
+	 
+	 -- UC
+	 alias opcode_uc : std_logic_vector(OPCODE_WIDTH-1 downto 0) is IFID_instrucao(31 DOWNTO 26);
 	 
 	 
 
 begin
-
-    instrucao <= rinstruction;
+		
+	 -- Passando soh para debug
+    instrucao <= IFID_instrucao;
 	 
 	 out_ula <= saida_ula;
 	 out_pc  <= pc_s;
 
     sel_mux_beq <= M_sel_beq AND EXMEM_Z_out;
+	 
 	 
 	  -- Reg IF/ID
 	  in_ifid <=  PC_mais_4 & instrucao_s;
@@ -150,11 +168,11 @@ begin
 				
         );
 		  
-	  -- Reg ID/EX WB                               M                                                       EX                                             SOMADOR
-	  in_idex <=  (escreve_RC & sel_mux_ula_mem) & (sel_mux_jump & sel_beq & leitura_RAM & escreve_RAM) & (sel_mux_rd_rt & ULAop & sel_mux_banco_ula) & (soma4ifid) & (RA & RB) & (sinal_ext & RT_addr & RD_addr);
+	  -- Reg ID/EX WB                            M 3                                   EX                                          SOMADOR
+	  in_idex <=  escreve_RC & sel_mux_ula_mem & sel_beq & leitura_RAM & escreve_RAM & sel_mux_rd_rt & ULAop & sel_mux_banco_ula & soma4ifid & RA & RB & sinal_ext & RT_addr & RD_addr;
 	  IDEX: entity work.Registrador
         generic map (
-            NUM_BITS => 149
+            NUM_BITS => 148
         )
         port map (
             clk 		=> clk,
@@ -165,11 +183,11 @@ begin
 				
         );
 		  
-	  -- Reg EX/MEM WB          M          PC+4            Z       SaidaULA      RB        saidaRDRT
-	  in_exmem <=  (IDEX_WB) & (IDEX_M) & (IDEX_pcmais4) & Z_out & saida_ula & IDEX_rb & saida_mux_rd_rt;
+	  -- Reg EX/MEM WB          M          PC+4            Z       saida_ula      RB        saidaRDRT
+	  in_exmem <=  IDEX_WB & IDEX_M & IDEX_pcmais4 & Z_out & saida_ula & IDEX_rb & saida_mux_rd_rt;
 	  EXMEM: entity work.Registrador
         generic map (
-            NUM_BITS => 108
+            NUM_BITS => 107
         )
         port map (
             clk 		=> clk,
@@ -214,6 +232,7 @@ begin
             saidaA       => RA,
             saidaB       => RB
         );
+		  out_enderecoEscrita <= MEMWB_saida_mux_rd_rt;
     
     -- ULA
      ULA: entity work.ULA
@@ -228,14 +247,27 @@ begin
             Z   => Z_out
         );
 		  
+		  -- Saidas pra debuggar
+		  out_entradaAula <= IDEX_ra;
+		  out_entradaBula <= saida_mux_banco_ula;
+		  out_selecionaULA <= ULActr;
+		  out_ULAop <= EX_ULAop;
+		  
     
-    UCULA : entity work.uc_ula 
+			UCULA : entity work.uc_ula 
         port map
         (
-            funct  => IDEX_Im(31 downto 26),
+            funct  => IDEX_Im(5 downto 0),
             ALUop  => EX_ULAop,
             ALUctr => ULActr
         );
+		  -- Unidade de controle
+	    UC : entity work.uc 
+			port map
+			(
+				  opcode              	=> opcode_uc,
+				  pontosDeControle    	=> pontosDeControle_s
+			 );
      
     -- PC e somadores
      PC: entity work.Registrador
@@ -321,7 +353,7 @@ begin
             larguraDado => 26
         )
 		port map (
-            shift_IN  => rinstruction(25 downto 0),
+            shift_IN  => IFID_instrucao(25 downto 0),
             shift_OUT => saida_shift_jump
         );
     
@@ -336,6 +368,10 @@ begin
             seletor  => WB_sel_mux_ula_mem,
             saida    => saida_mux_ula_mem
         );
+		  out_WB_escreve_rc <= WB_escreve_RC;
+		  out_MEMWB_ula <= MEMWB_saida_ula;
+		  out_MEMWB_mem <= MEMWB_dado_lido_mem;
+		  out_select_mem_ula <= WB_sel_mux_ula_mem;
 	 
      mux_Rd_Rt: entity work.muxGenerico2 
         generic map (
@@ -347,6 +383,7 @@ begin
             seletor  => EX_sel_rd_rt,
             saida    => saida_mux_rd_rt
         );
+
 	
      mux_Banco_Ula: entity work.muxGenerico2 
         generic map (
@@ -377,7 +414,7 @@ begin
 		port map (
             entradaA => saida_mux_beq,
             entradaB => PC_4_concat_imed,
-            seletor  => M_sel_jump,
+            seletor  => sel_mux_jump,
             saida    => saida_mux_jump
         );
 

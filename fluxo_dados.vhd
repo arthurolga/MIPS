@@ -58,17 +58,64 @@ architecture estrutural of fluxo_dados is
 	 -- Registradores de Controles
 	 signal in_ifid, out_ifid : std_LOGIC_VECTOR(64-1 downto 0);
 	 signal rinstruction : std_LOGIC_VECTOR(DATA_WIDTH-1 downto 0);
+	 
+	 alias soma4ifid : std_logic_vector(DATA_WIDTH-1 downto 0) is out_ifid(64-1 downto 32);
+	 
+	 
+	 signal in_idex, out_idex : std_LOGIC_VECTOR(149-1 downto 0);
+	 -- EX
+	 alias EX_sel_rd_rt :  std_logic is out_idex(142);
+	 alias EX_ULAop :  std_logic_VECTOR is out_idex(141 downto 139);
+	 alias EX_sel_banco_ula :  std_logic is out_idex(138);
+	 
+	 
+	 alias IDEX_WB :  std_logic_vector(2-1 downto 0) is out_idex(148 downto 147);
+	 alias IDEX_M :  std_logic_vector(4-1 downto 0) is out_idex(146 downto 143);
+	 alias IDEX_pcmais4 : std_logic_vector(DATA_WIDTH-1 downto 0) is out_idex(137 downto 106);
+	 alias IDEX_ra :  std_logic_vector(DATA_WIDTH-1 downto 0) is out_idex(105 downto 74);
+	 alias IDEX_rb :  std_logic_vector(DATA_WIDTH-1 downto 0) is out_idex(73 downto 42);
+	 alias IDEX_Im :  std_logic_vector(DATA_WIDTH-1 downto 0) is out_idex(41 downto 10);
+	 alias IDEX_rt :  std_logic_vector(5-1 downto 0) is out_idex(9 downto 5);
+	 alias IDEX_rd :  std_logic_vector(5-1 downto 0) is out_idex(4 downto 0);
+	 
+	 
+	 signal in_exmem, out_exmem : std_LOGIC_VECTOR(108-1 downto 0);
+	 
+	 -- M
+	 alias M_sel_jump : std_LOGIC is out_exmem(105);
+	 alias M_sel_beq : std_LOGIC is out_exmem(104);
+	 alias M_leitura_RAM : std_LOGIC is out_exmem(103);
+	 alias M_escreve_RAM : std_LOGIC is out_exmem(102);
+	 
+	 alias EXMEM_WB :  std_logic_vector(2-1 downto 0) is out_exmem(107 downto 106);
+	 alias EXMEM_PC_mais_4 :  std_logic_vector(DATA_WIDTH-1 downto 0) is out_exmem(101 downto 70);
+	 alias EXMEM_Z_out :  std_logic is out_exmem(69);
+	 alias EXMEM_saida_ula :  std_logic_vector(DATA_WIDTH-1 downto 0) is out_exmem(68 downto 37);
+	 alias EXMEM_RB :  std_logic_vector(DATA_WIDTH-1 downto 0) is out_exmem(36 downto 5);
+	 alias EXMEM_saida_mux_rd_rt :  std_logic_vector(5-1 downto 0) is out_exmem(4 downto 0);
+	 
+	 
+	 signal in_memwb, out_memwb : std_LOGIC_VECTOR(71-1 downto 0);
+	 
+	 alias WB_escreve_RC :  std_logic is out_memwb(70);
+	 alias WB_sel_mux_ula_mem :  std_logic is out_memwb(69);
+	 
+	 alias MEMWB_dado_lido_mem :  std_logic_vector(DATA_WIDTH-1 downto 0) is out_memwb(68 downto 37);
+	 alias MEMWB_saida_ula :  std_logic_vector(DATA_WIDTH-1 downto 0) is out_memwb(36 downto 5);
+	 alias MEMWB_saida_mux_rd_rt :  std_logic_vector(5-1 downto 0) is out_memwb(4 downto 0);
+	 
+	 
 
     -- Codigos da palavra de controle:
-    alias ULAop             : std_logic_vector(ALU_OP_WIDTH-1 downto 0) is pontosDeControle(10 downto 8);
-    alias escreve_RC        : std_logic is pontosDeControle(7);
-    alias escreve_RAM       : std_logic is pontosDeControle(6);
-    alias leitura_RAM       : std_logic is pontosDeControle(5);
-    alias sel_mux_ula_mem   : std_logic is pontosDeControle(4);
-    alias sel_mux_rd_rt     : std_logic is pontosDeControle(3);
-    alias sel_mux_banco_ula : std_logic is pontosDeControle(2);
-    alias sel_beq           : std_logic is pontosDeControle(1);
-    alias sel_mux_jump      : std_logic is pontosDeControle(0);
+    alias ULAop             : std_logic_vector(ALU_OP_WIDTH-1 downto 0) is pontosDeControle(10 downto 8); -- EX
+    alias escreve_RC        : std_logic is pontosDeControle(7); -- wb
+    alias escreve_RAM       : std_logic is pontosDeControle(6); -- M
+    alias leitura_RAM       : std_logic is pontosDeControle(5); -- M
+    alias sel_mux_ula_mem   : std_logic is pontosDeControle(4); -- wb
+    alias sel_mux_rd_rt     : std_logic is pontosDeControle(3); -- ex
+    alias sel_mux_banco_ula : std_logic is pontosDeControle(2); -- ex
+    alias sel_beq           : std_logic is pontosDeControle(1); -- M
+    alias sel_mux_jump      : std_logic is pontosDeControle(0); -- M
 
     -- Parsing da instrucao
     alias RS_addr   : std_logic_vector(REGBANK_ADDR_WIDTH-1 downto 0) is rinstruction(25 downto 21);
@@ -86,9 +133,9 @@ begin
 	 out_ula <= saida_ula;
 	 out_pc  <= pc_s;
 
-    sel_mux_beq <= sel_beq AND Z_out;
+    sel_mux_beq <= M_sel_beq AND EXMEM_Z_out;
 	 
-	 -- Reg IF/ID
+	  -- Reg IF/ID
 	  in_ifid <=  PC_mais_4 & instrucao_s;
 	  IFID: entity work.Registrador
         generic map (
@@ -97,12 +144,56 @@ begin
         port map (
             clk 		=> clk,
 				enable   => '1',
-				reset    => '1',
+				reset    => '1', -- Negado
 				data_in  => in_ifid,
 				data_out => out_ifid
 				
         );
-	 
+		  
+	  -- Reg ID/EX WB                               M                                                       EX                                             SOMADOR
+	  in_idex <=  (escreve_RC & sel_mux_ula_mem) & (sel_mux_jump & sel_beq & leitura_RAM & escreve_RAM) & (sel_mux_rd_rt & ULAop & sel_mux_banco_ula) & (soma4ifid) & (RA & RB) & (sinal_ext & RT_addr & RD_addr);
+	  IDEX: entity work.Registrador
+        generic map (
+            NUM_BITS => 149
+        )
+        port map (
+            clk 		=> clk,
+				enable   => '1',
+				reset    => '1', -- Negado
+				data_in  => in_idex,
+				data_out => out_idex
+				
+        );
+		  
+	  -- Reg EX/MEM WB          M          PC+4            Z       SaidaULA      RB        saidaRDRT
+	  in_exmem <=  (IDEX_WB) & (IDEX_M) & (IDEX_pcmais4) & Z_out & saida_ula & IDEX_rb & saida_mux_rd_rt;
+	  EXMEM: entity work.Registrador
+        generic map (
+            NUM_BITS => 108
+        )
+        port map (
+            clk 		=> clk,
+				enable   => '1',
+				reset    => '1', -- Negado
+				data_in  => in_exmem,
+				data_out => out_exmem
+				
+        );
+		
+	  -- Reg MEM/WB
+	  in_memwb <=  EXMEM_WB & dado_lido_mem & EXMEM_saida_ula& EXMEM_saida_mux_rd_rt;
+	  MEMWB: entity work.Registrador
+        generic map (
+            NUM_BITS => 71
+        )
+        port map (
+            clk 		=> clk,
+				enable   => '1',
+				reset    => '1', -- Negado
+				data_in  => in_memwb,
+				data_out => out_memwb
+			);
+		
 
     -- Ajuste do PC para jump (concatena com imediato multiplicado por 4)
     PC_4_concat_imed <= PC_mais_4(31 downto 28) & saida_shift_jump;
@@ -116,10 +207,10 @@ begin
         port map (
             enderecoA => RS_addr,
             enderecoB => RT_addr,
-            enderecoC => saida_mux_rd_rt,
+            enderecoC => MEMWB_saida_mux_rd_rt,
             clk          => clk,
             dadoEscritaC => saida_mux_ula_mem, 
-            escreveC     => escreve_RC,
+            escreveC     => WB_escreve_RC,
             saidaA       => RA,
             saidaB       => RB
         );
@@ -130,7 +221,7 @@ begin
             NUM_BITS => DATA_WIDTH
         )
 		port map (
-            A   => RA,
+            A   => IDEX_ra,
             B   => saida_mux_banco_ula,
             ctr => ULActr,
             C   => saida_ula,
@@ -141,8 +232,8 @@ begin
     UCULA : entity work.uc_ula 
         port map
         (
-            funct  => funct,
-            ALUop  => ULAop,
+            funct  => IDEX_Im(31 downto 26),
+            ALUop  => EX_ULAop,
             ALUctr => ULActr
         );
      
@@ -165,7 +256,7 @@ begin
         )
 		port map (
             entradaA => entrada_somador_beq,
-            entradaB => PC_mais_4,
+            entradaB => IDEX_pcmais4,
             saida    => PC_mais_4_mais_imediato
         );
     
@@ -196,11 +287,11 @@ begin
             addrWidth => ADDR_WIDTH
         )
 		port map (
-            endereco    => saida_ula, 
-            we          => escreve_RAM,
-            re          => leitura_RAM,
+            endereco    => EXMEM_saida_ula, 
+            we          => M_escreve_RAM,
+            re          => M_leitura_RAM,
             clk         => clk,
-            dado_write  => RB,
+            dado_write  => EXMEM_RB,
             dado_read   => dado_lido_mem
         ); 
 
@@ -220,7 +311,7 @@ begin
             larguraDado => DATA_WIDTH
         )
 		port map (
-            shift_IN  => sinal_ext,
+            shift_IN  => IDEX_Im,
             shift_OUT => entrada_somador_beq
         );
     
@@ -240,9 +331,9 @@ begin
             larguraDados => DATA_WIDTH
         )
 		port map (
-            entradaA => saida_ula, 
-            entradaB => dado_lido_mem, 
-            seletor  => sel_mux_ula_mem,
+            entradaA => MEMWB_saida_ula, 
+            entradaB => MEMWB_dado_lido_mem, 
+            seletor  => WB_sel_mux_ula_mem,
             saida    => saida_mux_ula_mem
         );
 	 
@@ -253,7 +344,7 @@ begin
 		port map (
             entradaA => RT_addr, 
             entradaB => RD_addr,
-            seletor  => sel_mux_rd_rt,
+            seletor  => EX_sel_rd_rt,
             saida    => saida_mux_rd_rt
         );
 	
@@ -262,9 +353,9 @@ begin
             larguraDados => DATA_WIDTH
         )
 		port map (
-            entradaA => RB, 
-            entradaB => sinal_ext,  
-            seletor  => sel_mux_banco_ula,
+            entradaA => IDEX_rb, 
+            entradaB => IDEX_Im,  
+            seletor  => EX_sel_banco_ula,
             saida    => saida_mux_banco_ula
         );
 		
@@ -286,7 +377,7 @@ begin
 		port map (
             entradaA => saida_mux_beq,
             entradaB => PC_4_concat_imed,
-            seletor  => sel_mux_jump,
+            seletor  => M_sel_jump,
             saida    => saida_mux_jump
         );
 

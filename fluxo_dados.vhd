@@ -378,8 +378,8 @@ begin
             larguraDados => REGBANK_ADDR_WIDTH
         )
 		port map (
-            entradaA => RT_addr, 
-            entradaB => RD_addr,
+            entradaA => IDEX_rt,--RT_addr, 
+            entradaB => IDEX_rd,
             seletor  => EX_sel_rd_rt,
             saida    => saida_mux_rd_rt
         );

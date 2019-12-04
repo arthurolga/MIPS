@@ -9,16 +9,16 @@ z2
 cModel Technology
 d/home/lucasv/Downloads/mips-SemUC_restored/simulation/qsim
 Efluxo_dados
-Z0 w1575416838
-Z1 DPx10 cycloneive 20 cycloneive_atom_pack 0 22 g8;l:a_bzlE?3R3d7zk3Z0
-Z2 DPx10 cycloneive 21 cycloneive_components 0 22 Yj^f[Ven<H;0LiK:6PWEg0
+Z0 w1575468210
+Z1 DPx10 cycloneive 20 cycloneive_atom_pack 0 22 N5CzKW88F^ShIK@<7Vek12
+Z2 DPx10 cycloneive 21 cycloneive_components 0 22 K8IbX`K5[Y1gJUKg2X_071
 Z3 DPx4 ieee 16 vital_primitives 0 22 G>kiXP8Q9dRClKfK1Zn7j1
-Z4 DPx6 altera 11 dffeas_pack 0 22 :S1C`o89Vbe5bV6`:6CaB3
+Z4 DPx6 altera 11 dffeas_pack 0 22 ?bDUB9Db2N8iCCALNL;CT3
 Z5 DPx4 ieee 12 vital_timing 0 22 J>EBealN09f8GzldA[z2>3
 Z6 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z7 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
-Z8 DPx6 altera 28 altera_primitives_components 0 22 z?[99Tn<@QGNik3V1c6ah1
-Z9 d/home/arqcomp/Desktop/MIPS/simulation/qsim
+Z8 DPx6 altera 28 altera_primitives_components 0 22 c]VUMXSEi8Z`KM1bem<:B3
+Z9 d/home/lucasv/Desktop/mips/simulation/qsim
 Z10 8mips.vho
 Z11 Fmips.vho
 l0
@@ -27,14 +27,14 @@ V5]:UhYj<]cAC5I>T_5?PU2
 !s100 DhCNSM^:`V:mf`HSfJV392
 Z12 OV;C;10.5b;63
 32
-Z13 !s110 1575416839
+!s110 1575468210
 !i10b 1
-Z14 !s108 1575416839.000000
-Z15 !s90 -work|work|mips.vho|
-Z16 !s107 mips.vho|
+Z13 !s108 1575468210.000000
+Z14 !s90 -work|work|mips.vho|
+Z15 !s107 mips.vho|
 !i113 1
-Z17 o-work work
-Z18 tExplicit 1 CvgOpt 0
+Z16 o-work work
+Z17 tExplicit 1 CvgOpt 0
 Astructure
 R1
 R2
@@ -47,66 +47,66 @@ R8
 DEx4 work 11 fluxo_dados 0 22 5]:UhYj<]cAC5I>T_5?PU2
 l3471
 L54
-VGm]fgOcQ7IYSF4PPZG`:^3
-!s100 4n8L^UiM1^WTJf2UBjB^P0
+V48z=ob1>Vo1KkSRFGd5BO2
+!s100 bOhE4<1NRcHCPd;WfQA?K2
 R12
 32
-R13
+Z18 !s110 1575468211
 !i10b 1
+R13
 R14
 R15
-R16
 !i113 1
+R16
 R17
-R18
 Efluxo_dados_vhd_vec_tst
-Z19 w1575416837
+Z19 w1575468209
 R6
 R7
 R9
-Z20 8Waveform7.vwf.vht
-Z21 FWaveform7.vwf.vht
+Z20 8Waveform9.vwf.vht
+Z21 FWaveform9.vwf.vht
 l0
 L31
 VO8kBnL;ORmGfgiL0@KRcn0
 !s100 VW?@I:CN1Iz2z2E0[?C@T2
 R12
 32
-R13
-!i10b 1
-R14
-Z22 !s90 -work|work|Waveform7.vwf.vht|
-Z23 !s107 Waveform7.vwf.vht|
-!i113 1
-R17
 R18
+!i10b 1
+Z22 !s108 1575468211.000000
+Z23 !s90 -work|work|Waveform9.vwf.vht|
+Z24 !s107 Waveform9.vwf.vht|
+!i113 1
+R16
+R17
 Afluxo_dados_arch
 R6
 R7
-Z24 DEx4 work 23 fluxo_dados_vhd_vec_tst 0 22 O8kBnL;ORmGfgiL0@KRcn0
+Z25 DEx4 work 23 fluxo_dados_vhd_vec_tst 0 22 O8kBnL;ORmGfgiL0@KRcn0
 l66
 L33
-Z25 VF;fcMf:M@0[P54IAHc[e=3
-Z26 !s100 4cSaQ3E?S<ddEjS:8O56n1
+Z26 ViI8mFZaBfQKN]laBno=z90
+Z27 !s100 ;aS6gSRf5o[h`k7kZlkfd0
 R12
 32
-R13
+R18
 !i10b 1
-R14
 R22
 R23
+R24
 !i113 1
+R16
 R17
-R18
 Ehard_block
-Z27 w1575404403
+Z28 w1575404403
 R3
-R1
+Z29 DPx10 cycloneive 20 cycloneive_atom_pack 0 22 g8;l:a_bzlE?3R3d7zk3Z0
 R5
 R6
 R7
-R2
-R9
+Z30 DPx10 cycloneive 21 cycloneive_components 0 22 Yj^f[Ven<H;0LiK:6PWEg0
+Z31 d/home/arqcomp/Desktop/MIPS/simulation/qsim
 R10
 R11
 l0
@@ -115,21 +115,21 @@ VOgIg9T_BR7joedFDVM>H13
 !s100 A`ID_i56<Ua56=ZD=[EG=2
 R12
 32
-Z28 !s110 1575404404
+Z32 !s110 1575404404
 !i10b 1
-Z29 !s108 1575404404.000000
+Z33 !s108 1575404404.000000
+R14
 R15
-R16
 !i113 1
+R16
 R17
-R18
 Astructure
 R3
-R1
+R29
 R5
 R6
 R7
-R2
+R30
 DEx4 work 10 hard_block 0 22 OgIg9T_BR7joedFDVM>H13
 l64
 L50
@@ -137,25 +137,25 @@ V`^CmQg<48W[ez[JL_5@Yn2
 !s100 2S?JL;LJ@<3:BHXTNcXS]3
 R12
 32
-R28
+R32
 !i10b 1
-R29
+R33
+R14
 R15
-R16
 !i113 1
+R16
 R17
-R18
 Emips
-Z30 w1575403414
-R1
-R2
+Z34 w1575403414
+R29
+R30
 R3
-R4
+Z35 DPx6 altera 11 dffeas_pack 0 22 :S1C`o89Vbe5bV6`:6CaB3
 R5
 R6
 R7
-R8
-R9
+Z36 DPx6 altera 28 altera_primitives_components 0 22 z?[99Tn<@QGNik3V1c6ah1
+R31
 R10
 R11
 l0
@@ -164,23 +164,23 @@ VXR6QQKeOIYe?U_NIz<RRU1
 !s100 [ZPoIe:]6C4F_EaQR<XbG3
 R12
 32
-Z31 !s110 1575403415
+Z37 !s110 1575403415
 !i10b 1
-Z32 !s108 1575403415.000000
+Z38 !s108 1575403415.000000
+R14
 R15
-R16
 !i113 1
+R16
 R17
-R18
 Astructure
-R1
-R2
+R29
+R30
 R3
-R4
+R35
 R5
 R6
 R7
-R8
+R36
 DEx4 work 4 mips 0 22 XR6QQKeOIYe?U_NIz<RRU1
 l1327
 L244
@@ -188,35 +188,35 @@ VU=hC0zA:@<zMU?PO`KD>_1
 !s100 ?OY8BF>z?43:Ae]M>V@LL3
 R12
 32
-R31
+R37
 !i10b 1
-R32
+R38
+R14
 R15
-R16
 !i113 1
+R16
 R17
-R18
 Emips_vhd_vec_tst
-Z33 w1575403413
+Z39 w1575403413
 R6
 R7
-R9
-Z34 8Waveform6.vwf.vht
-Z35 FWaveform6.vwf.vht
+R31
+Z40 8Waveform6.vwf.vht
+Z41 FWaveform6.vwf.vht
 l0
 L31
 V9DlO:XLN`VbaHK^H76nVA3
 !s100 H7f7B9Gbj_T4GFE4m1]5D2
 R12
 32
-R31
+R37
 !i10b 1
-R32
-Z36 !s90 -work|work|Waveform6.vwf.vht|
-Z37 !s107 Waveform6.vwf.vht|
+R38
+Z42 !s90 -work|work|Waveform6.vwf.vht|
+Z43 !s107 Waveform6.vwf.vht|
 !i113 1
+R16
 R17
-R18
 Amips_arch
 R6
 R7
@@ -227,23 +227,23 @@ VXzMW=?[eVeIzoTSH1^=EZ1
 !s100 HVP?mPz`_FMn9>4bQC[Ue2
 R12
 32
-R31
-!i10b 1
-R32
-R36
 R37
+!i10b 1
+R38
+R42
+R43
 !i113 1
+R16
 R17
-R18
 Eula
-Z38 w1575401642
+Z44 w1575401642
 R3
-R1
+R29
 R5
 R6
 R7
-R2
-R9
+R30
+R31
 R10
 R11
 l0
@@ -252,21 +252,21 @@ VS?IQ0<<LD;`@V16i4<gG_2
 !s100 ZLFTnoU<iZNI5Ig>QHFn72
 R12
 32
-Z39 !s110 1575401643
+Z45 !s110 1575401643
 !i10b 1
-Z40 !s108 1575401643.000000
+Z46 !s108 1575401643.000000
+R14
 R15
-R16
 !i113 1
+R16
 R17
-R18
 Astructure
 R3
-R1
+R29
 R5
 R6
 R7
-R2
+R30
 DEx4 work 3 ula 0 22 S?IQ0<<LD;`@V16i4<gG_2
 l583
 L191
@@ -274,35 +274,35 @@ VG^<oGnE9?NeTUK9P2HkKM0
 !s100 2eXYNPn?Skz28EVL=VjkF3
 R12
 32
-R39
+R45
 !i10b 1
-R40
+R46
+R14
 R15
-R16
 !i113 1
+R16
 R17
-R18
 Eula_vhd_vec_tst
-Z41 w1575401641
+Z47 w1575401641
 R6
 R7
-R9
-Z42 8Waveform5.vwf.vht
-Z43 FWaveform5.vwf.vht
+R31
+Z48 8Waveform5.vwf.vht
+Z49 FWaveform5.vwf.vht
 l0
 L31
 V;AJ0Iea<UKi@1Wc^2kLO^0
 !s100 ]I6fbBl<B<WlH[ZEDmAGa1
 R12
 32
-R39
+R45
 !i10b 1
-R40
-Z44 !s90 -work|work|Waveform5.vwf.vht|
-Z45 !s107 Waveform5.vwf.vht|
+R46
+Z50 !s90 -work|work|Waveform5.vwf.vht|
+Z51 !s107 Waveform5.vwf.vht|
 !i113 1
+R16
 R17
-R18
 Aula_arch
 R6
 R7
@@ -313,11 +313,11 @@ Vz=g7E3<R6ZPBmSg@UZg:E2
 !s100 ;h2S6Jaf257l;4A4zWIOa3
 R12
 32
-R39
-!i10b 1
-R40
-R44
 R45
+!i10b 1
+R46
+R50
+R51
 !i113 1
+R16
 R17
-R18

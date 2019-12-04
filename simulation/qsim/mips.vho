@@ -1,4 +1,4 @@
--- Copyright (C) 2018  Intel Corporation. All rights reserved.
+-- Copyright (C) 2017  Intel Corporation. All rights reserved.
 -- Your use of Intel Corporation's design tools, logic functions 
 -- and other software and tools, and its AMPP partner logic 
 -- functions, and any output files from any of the foregoing 
@@ -14,9 +14,9 @@
 
 -- VENDOR "Altera"
 -- PROGRAM "Quartus Prime"
--- VERSION "Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition"
+-- VERSION "Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition"
 
--- DATE "12/03/2019 20:47:18"
+-- DATE "12/04/2019 11:03:30"
 
 -- 
 -- Device: Altera EP4CE115F29C7 Package FBGA780
@@ -8004,6 +8004,19 @@ PORT MAP (
 	devpor => ww_devpor,
 	portadataout => \ROM|memROM_rtl_0|auto_generated|ram_block1a20_PORTADATAOUT_bus\);
 
+\IDEX|data_s[9]\ : dffeas
+-- pragma translate_off
+GENERIC MAP (
+	is_wysiwyg => "true",
+	power_up => "low")
+-- pragma translate_on
+PORT MAP (
+	clk => \clk~input_o\,
+	d => \ROM|memROM_rtl_0|auto_generated|ram_block1a20~portadataout\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	q => \IDEX|data_s\(9));
+
 \IDEX|data_s[142]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -8019,7 +8032,7 @@ PORT MAP (
 
 \mux_Rd_Rt|saida[4]~4\ : cycloneive_lcell_comb
 -- Equation(s):
--- \mux_Rd_Rt|saida[4]~4_combout\ = (\IDEX|data_s\(142) & (\ROM|memROM_rtl_0|auto_generated|ram_block1a15~portadataout\)) # (!\IDEX|data_s\(142) & ((\ROM|memROM_rtl_0|auto_generated|ram_block1a20~portadataout\)))
+-- \mux_Rd_Rt|saida[4]~4_combout\ = (\IDEX|data_s\(142) & (\IDEX|data_s\(41))) # (!\IDEX|data_s\(142) & ((\IDEX|data_s\(9))))
 
 -- pragma translate_off
 GENERIC MAP (
@@ -8027,8 +8040,8 @@ GENERIC MAP (
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \ROM|memROM_rtl_0|auto_generated|ram_block1a15~portadataout\,
-	datab => \ROM|memROM_rtl_0|auto_generated|ram_block1a20~portadataout\,
+	dataa => \IDEX|data_s\(41),
+	datab => \IDEX|data_s\(9),
 	datad => \IDEX|data_s\(142),
 	combout => \mux_Rd_Rt|saida[4]~4_combout\);
 
@@ -8093,6 +8106,19 @@ PORT MAP (
 	devpor => ww_devpor,
 	portadataout => \ROM|memROM_rtl_0|auto_generated|ram_block1a11_PORTADATAOUT_bus\);
 
+\IDEX|data_s[21]\ : dffeas
+-- pragma translate_off
+GENERIC MAP (
+	is_wysiwyg => "true",
+	power_up => "low")
+-- pragma translate_on
+PORT MAP (
+	clk => \clk~input_o\,
+	d => \ROM|memROM_rtl_0|auto_generated|ram_block1a11~portadataout\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	q => \IDEX|data_s\(21));
+
 \ROM|memROM_rtl_0|auto_generated|ram_block1a16\ : cycloneive_ram_block
 -- pragma translate_off
 GENERIC MAP (
@@ -8128,9 +8154,22 @@ PORT MAP (
 	devpor => ww_devpor,
 	portadataout => \ROM|memROM_rtl_0|auto_generated|ram_block1a16_PORTADATAOUT_bus\);
 
+\IDEX|data_s[5]\ : dffeas
+-- pragma translate_off
+GENERIC MAP (
+	is_wysiwyg => "true",
+	power_up => "low")
+-- pragma translate_on
+PORT MAP (
+	clk => \clk~input_o\,
+	d => \ROM|memROM_rtl_0|auto_generated|ram_block1a16~portadataout\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	q => \IDEX|data_s\(5));
+
 \mux_Rd_Rt|saida[0]~0\ : cycloneive_lcell_comb
 -- Equation(s):
--- \mux_Rd_Rt|saida[0]~0_combout\ = (\IDEX|data_s\(142) & (\ROM|memROM_rtl_0|auto_generated|ram_block1a11~portadataout\)) # (!\IDEX|data_s\(142) & ((\ROM|memROM_rtl_0|auto_generated|ram_block1a16~portadataout\)))
+-- \mux_Rd_Rt|saida[0]~0_combout\ = (\IDEX|data_s\(142) & (\IDEX|data_s\(21))) # (!\IDEX|data_s\(142) & ((\IDEX|data_s\(5))))
 
 -- pragma translate_off
 GENERIC MAP (
@@ -8138,8 +8177,8 @@ GENERIC MAP (
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \ROM|memROM_rtl_0|auto_generated|ram_block1a11~portadataout\,
-	datab => \ROM|memROM_rtl_0|auto_generated|ram_block1a16~portadataout\,
+	dataa => \IDEX|data_s\(21),
+	datab => \IDEX|data_s\(5),
 	datad => \IDEX|data_s\(142),
 	combout => \mux_Rd_Rt|saida[0]~0_combout\);
 
@@ -8204,6 +8243,19 @@ PORT MAP (
 	devpor => ww_devpor,
 	portadataout => \ROM|memROM_rtl_0|auto_generated|ram_block1a12_PORTADATAOUT_bus\);
 
+\IDEX|data_s[22]\ : dffeas
+-- pragma translate_off
+GENERIC MAP (
+	is_wysiwyg => "true",
+	power_up => "low")
+-- pragma translate_on
+PORT MAP (
+	clk => \clk~input_o\,
+	d => \ROM|memROM_rtl_0|auto_generated|ram_block1a12~portadataout\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	q => \IDEX|data_s\(22));
+
 \ROM|memROM_rtl_0|auto_generated|ram_block1a17\ : cycloneive_ram_block
 -- pragma translate_off
 GENERIC MAP (
@@ -8239,9 +8291,22 @@ PORT MAP (
 	devpor => ww_devpor,
 	portadataout => \ROM|memROM_rtl_0|auto_generated|ram_block1a17_PORTADATAOUT_bus\);
 
+\IDEX|data_s[6]\ : dffeas
+-- pragma translate_off
+GENERIC MAP (
+	is_wysiwyg => "true",
+	power_up => "low")
+-- pragma translate_on
+PORT MAP (
+	clk => \clk~input_o\,
+	d => \ROM|memROM_rtl_0|auto_generated|ram_block1a17~portadataout\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	q => \IDEX|data_s\(6));
+
 \mux_Rd_Rt|saida[1]~1\ : cycloneive_lcell_comb
 -- Equation(s):
--- \mux_Rd_Rt|saida[1]~1_combout\ = (\IDEX|data_s\(142) & (\ROM|memROM_rtl_0|auto_generated|ram_block1a12~portadataout\)) # (!\IDEX|data_s\(142) & ((\ROM|memROM_rtl_0|auto_generated|ram_block1a17~portadataout\)))
+-- \mux_Rd_Rt|saida[1]~1_combout\ = (\IDEX|data_s\(142) & (\IDEX|data_s\(22))) # (!\IDEX|data_s\(142) & ((\IDEX|data_s\(6))))
 
 -- pragma translate_off
 GENERIC MAP (
@@ -8249,8 +8314,8 @@ GENERIC MAP (
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \ROM|memROM_rtl_0|auto_generated|ram_block1a12~portadataout\,
-	datab => \ROM|memROM_rtl_0|auto_generated|ram_block1a17~portadataout\,
+	dataa => \IDEX|data_s\(22),
+	datab => \IDEX|data_s\(6),
 	datad => \IDEX|data_s\(142),
 	combout => \mux_Rd_Rt|saida[1]~1_combout\);
 
@@ -8315,6 +8380,19 @@ PORT MAP (
 	devpor => ww_devpor,
 	portadataout => \ROM|memROM_rtl_0|auto_generated|ram_block1a13_PORTADATAOUT_bus\);
 
+\IDEX|data_s[23]\ : dffeas
+-- pragma translate_off
+GENERIC MAP (
+	is_wysiwyg => "true",
+	power_up => "low")
+-- pragma translate_on
+PORT MAP (
+	clk => \clk~input_o\,
+	d => \ROM|memROM_rtl_0|auto_generated|ram_block1a13~portadataout\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	q => \IDEX|data_s\(23));
+
 \ROM|memROM_rtl_0|auto_generated|ram_block1a18\ : cycloneive_ram_block
 -- pragma translate_off
 GENERIC MAP (
@@ -8350,9 +8428,22 @@ PORT MAP (
 	devpor => ww_devpor,
 	portadataout => \ROM|memROM_rtl_0|auto_generated|ram_block1a18_PORTADATAOUT_bus\);
 
+\IDEX|data_s[7]\ : dffeas
+-- pragma translate_off
+GENERIC MAP (
+	is_wysiwyg => "true",
+	power_up => "low")
+-- pragma translate_on
+PORT MAP (
+	clk => \clk~input_o\,
+	d => \ROM|memROM_rtl_0|auto_generated|ram_block1a18~portadataout\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	q => \IDEX|data_s\(7));
+
 \mux_Rd_Rt|saida[2]~2\ : cycloneive_lcell_comb
 -- Equation(s):
--- \mux_Rd_Rt|saida[2]~2_combout\ = (\IDEX|data_s\(142) & (\ROM|memROM_rtl_0|auto_generated|ram_block1a13~portadataout\)) # (!\IDEX|data_s\(142) & ((\ROM|memROM_rtl_0|auto_generated|ram_block1a18~portadataout\)))
+-- \mux_Rd_Rt|saida[2]~2_combout\ = (\IDEX|data_s\(142) & (\IDEX|data_s\(23))) # (!\IDEX|data_s\(142) & ((\IDEX|data_s\(7))))
 
 -- pragma translate_off
 GENERIC MAP (
@@ -8360,8 +8451,8 @@ GENERIC MAP (
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \ROM|memROM_rtl_0|auto_generated|ram_block1a13~portadataout\,
-	datab => \ROM|memROM_rtl_0|auto_generated|ram_block1a18~portadataout\,
+	dataa => \IDEX|data_s\(23),
+	datab => \IDEX|data_s\(7),
 	datad => \IDEX|data_s\(142),
 	combout => \mux_Rd_Rt|saida[2]~2_combout\);
 
@@ -8426,6 +8517,19 @@ PORT MAP (
 	devpor => ww_devpor,
 	portadataout => \ROM|memROM_rtl_0|auto_generated|ram_block1a14_PORTADATAOUT_bus\);
 
+\IDEX|data_s[24]\ : dffeas
+-- pragma translate_off
+GENERIC MAP (
+	is_wysiwyg => "true",
+	power_up => "low")
+-- pragma translate_on
+PORT MAP (
+	clk => \clk~input_o\,
+	d => \ROM|memROM_rtl_0|auto_generated|ram_block1a14~portadataout\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	q => \IDEX|data_s\(24));
+
 \ROM|memROM_rtl_0|auto_generated|ram_block1a19\ : cycloneive_ram_block
 -- pragma translate_off
 GENERIC MAP (
@@ -8461,9 +8565,22 @@ PORT MAP (
 	devpor => ww_devpor,
 	portadataout => \ROM|memROM_rtl_0|auto_generated|ram_block1a19_PORTADATAOUT_bus\);
 
+\IDEX|data_s[8]\ : dffeas
+-- pragma translate_off
+GENERIC MAP (
+	is_wysiwyg => "true",
+	power_up => "low")
+-- pragma translate_on
+PORT MAP (
+	clk => \clk~input_o\,
+	d => \ROM|memROM_rtl_0|auto_generated|ram_block1a19~portadataout\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	q => \IDEX|data_s\(8));
+
 \mux_Rd_Rt|saida[3]~3\ : cycloneive_lcell_comb
 -- Equation(s):
--- \mux_Rd_Rt|saida[3]~3_combout\ = (\IDEX|data_s\(142) & (\ROM|memROM_rtl_0|auto_generated|ram_block1a14~portadataout\)) # (!\IDEX|data_s\(142) & ((\ROM|memROM_rtl_0|auto_generated|ram_block1a19~portadataout\)))
+-- \mux_Rd_Rt|saida[3]~3_combout\ = (\IDEX|data_s\(142) & (\IDEX|data_s\(24))) # (!\IDEX|data_s\(142) & ((\IDEX|data_s\(8))))
 
 -- pragma translate_off
 GENERIC MAP (
@@ -8471,8 +8588,8 @@ GENERIC MAP (
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \ROM|memROM_rtl_0|auto_generated|ram_block1a14~portadataout\,
-	datab => \ROM|memROM_rtl_0|auto_generated|ram_block1a19~portadataout\,
+	dataa => \IDEX|data_s\(24),
+	datab => \IDEX|data_s\(8),
 	datad => \IDEX|data_s\(142),
 	combout => \mux_Rd_Rt|saida[3]~3_combout\);
 
@@ -31425,19 +31542,6 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \IDEX|data_s\(89));
 
-\IDEX|data_s[24]\ : dffeas
--- pragma translate_off
-GENERIC MAP (
-	is_wysiwyg => "true",
-	power_up => "low")
--- pragma translate_on
-PORT MAP (
-	clk => \clk~input_o\,
-	d => \ROM|memROM_rtl_0|auto_generated|ram_block1a14~portadataout\,
-	devclrn => ww_devclrn,
-	devpor => ww_devpor,
-	q => \IDEX|data_s\(24));
-
 \EXMEM|data_s[19]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -32289,19 +32393,6 @@ PORT MAP (
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \IDEX|data_s\(88));
-
-\IDEX|data_s[23]\ : dffeas
--- pragma translate_off
-GENERIC MAP (
-	is_wysiwyg => "true",
-	power_up => "low")
--- pragma translate_on
-PORT MAP (
-	clk => \clk~input_o\,
-	d => \ROM|memROM_rtl_0|auto_generated|ram_block1a13~portadataout\,
-	devclrn => ww_devclrn,
-	devpor => ww_devpor,
-	q => \IDEX|data_s\(23));
 
 \EXMEM|data_s[18]\ : dffeas
 -- pragma translate_off
@@ -33155,19 +33246,6 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \IDEX|data_s\(87));
 
-\IDEX|data_s[22]\ : dffeas
--- pragma translate_off
-GENERIC MAP (
-	is_wysiwyg => "true",
-	power_up => "low")
--- pragma translate_on
-PORT MAP (
-	clk => \clk~input_o\,
-	d => \ROM|memROM_rtl_0|auto_generated|ram_block1a12~portadataout\,
-	devclrn => ww_devclrn,
-	devpor => ww_devpor,
-	q => \IDEX|data_s\(22));
-
 \EXMEM|data_s[17]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -34019,19 +34097,6 @@ PORT MAP (
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \IDEX|data_s\(86));
-
-\IDEX|data_s[21]\ : dffeas
--- pragma translate_off
-GENERIC MAP (
-	is_wysiwyg => "true",
-	power_up => "low")
--- pragma translate_on
-PORT MAP (
-	clk => \clk~input_o\,
-	d => \ROM|memROM_rtl_0|auto_generated|ram_block1a11~portadataout\,
-	devclrn => ww_devclrn,
-	devpor => ww_devpor,
-	q => \IDEX|data_s\(21));
 
 \EXMEM|data_s[16]\ : dffeas
 -- pragma translate_off

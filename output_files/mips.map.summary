@@ -1,12 +1,12 @@
-Analysis & Synthesis Status : Successful - Tue Dec  3 20:47:11 2019
-Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Analysis & Synthesis Status : Successful - Wed Dec  4 11:03:12 2019
+Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 Revision Name : mips
 Top-level Entity Name : fluxo_dados
 Family : Cyclone IV E
-Total logic elements : 2,877
+Total logic elements : 2,882
     Total combinational functions : 1,781
-    Dedicated logic registers : 1,318
-Total registers : 1318
+    Dedicated logic registers : 1,323
+Total registers : 1323
 Total pins : 239
 Total virtual pins : 0
 Total memory bits : 4,096

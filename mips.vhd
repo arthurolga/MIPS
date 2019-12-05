@@ -16,6 +16,7 @@ entity mips is
 		  KEY									: IN STD_LOGIC_VECTOR(0 DOWNTO 0);
 		  LEDR								: OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
 		  LEDG								: OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+		  
 		  HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7 : out std_logic_vector(6 downto 0)
     );
 end entity;
@@ -33,6 +34,7 @@ architecture estrutural of mips is
 	 signal saida_ula : std_logic_vector(DATA_WIDTH-1 downto 0);
 	 signal entrada_a_ula : std_logic_vector(DATA_WIDTH-1 downto 0);
 	 signal entrada_b_ula : std_logic_vector(DATA_WIDTH-1 downto 0);
+	 signal clock_btn : std_LOGIC;
 
 
     -- Sinal de clock auxiliar para simulação
@@ -43,11 +45,20 @@ begin
 
     -- CLOCK generator auxiliar para simulação
     -- CG : entity work.clock_generator port map (clk	=> clk);
+	 
+	 	edgeDetect : entity work.edgeDetector
+		port map
+		(
+			  clk	                    => CLOCK_50,
+			  entrada                 => NOT KEY(0),
+			  saida  					  => clock_btn
+		 );
+	 
 
     FD : entity work.fluxo_dados 
 	port map
 	(
-        clk	                    => clk,-- NOT KEY(0),
+        clk	                    =>  clock_btn, -- NOT KEY(0),
         -- pontosDeControle        => pontosDeControle,
         instrucao               => instrucao,
 		  out_pc						  => saida_pc,

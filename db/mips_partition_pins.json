@@ -948,6 +948,22 @@
 					"strict" : false
 				},
 				{
+					"name" : "out_sel_mux_beq",
+					"strict" : false
+				},
+				{
+					"name" : "M_sel_beq_WF",
+					"strict" : false
+				},
+				{
+					"name" : "EXMEM_Z_out_WF",
+					"strict" : false
+				},
+				{
+					"name" : "out_sel_mux_jump",
+					"strict" : false
+				},
+				{
 					"name" : "clk",
 					"strict" : false
 				}

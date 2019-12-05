@@ -1,6 +1,6 @@
 EDA Netlist Writer report for mips
-Wed Dec  4 11:03:30 2019
-Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+Thu Dec  5 10:59:59 2019
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
 ---------------------
@@ -17,7 +17,7 @@ Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2017  Intel Corporation. All rights reserved.
+Copyright (C) 2018  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
@@ -36,7 +36,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Wed Dec  4 11:03:30 2019 ;
+; EDA Netlist Writer Status ; Successful - Thu Dec  5 10:59:59 2019 ;
 ; Revision Name             ; mips                                  ;
 ; Top-level Entity Name     ; fluxo_dados                           ;
 ; Family                    ; Cyclone IV E                          ;
@@ -65,13 +65,13 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------------------------------+------------------------+
 
 
-+-----------------------------------------------------+
-; Simulation Generated Files                          ;
-+-----------------------------------------------------+
-; Generated Files                                     ;
-+-----------------------------------------------------+
-; /home/lucasv/Desktop/mips/simulation/qsim//mips.vho ;
-+-----------------------------------------------------+
++------------------------------------------------------+
+; Simulation Generated Files                           ;
++------------------------------------------------------+
+; Generated Files                                      ;
++------------------------------------------------------+
+; /home/arqcomp/Desktop/MIPS/simulation/qsim//mips.vho ;
++------------------------------------------------------+
 
 
 +-----------------------------+
@@ -79,8 +79,8 @@ refer to the applicable agreement for further details.
 +-----------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
-    Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Copyright (C) 2017  Intel Corporation. All rights reserved.
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Copyright (C) 2018  Intel Corporation. All rights reserved.
     Info: Your use of Intel Corporation's design tools, logic functions 
     Info: and other software and tools, and its AMPP partner logic 
     Info: functions, and any output files from any of the foregoing 
@@ -93,13 +93,13 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: the sole purpose of programming logic devices manufactured by
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details.
-    Info: Processing started: Wed Dec  4 11:03:29 2019
-Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory=/home/lucasv/Desktop/mips/simulation/qsim/ mips -c mips
+    Info: Processing started: Thu Dec  5 10:59:58 2019
+Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory=/home/arqcomp/Desktop/MIPS/simulation/qsim/ mips -c mips
 Info (119006): Selected device EP4CE115F29C7 for design "mips"
-Info (204019): Generated file mips.vho in folder "/home/lucasv/Desktop/mips/simulation/qsim//" for EDA simulation tool
+Info (204019): Generated file mips.vho in folder "/home/arqcomp/Desktop/MIPS/simulation/qsim//" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 1070 megabytes
-    Info: Processing ended: Wed Dec  4 11:03:30 2019
+    Info: Peak virtual memory: 1062 megabytes
+    Info: Processing ended: Thu Dec  5 10:59:59 2019
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 

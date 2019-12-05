@@ -244,6 +244,10 @@ out_enderecoEscrita[1] <= registrador:MEMWB.data_out[1]
 out_enderecoEscrita[2] <= registrador:MEMWB.data_out[2]
 out_enderecoEscrita[3] <= registrador:MEMWB.data_out[3]
 out_enderecoEscrita[4] <= registrador:MEMWB.data_out[4]
+out_sel_mux_beq <= sel_mux_beq.DB_MAX_OUTPUT_PORT_TYPE
+M_sel_beq_WF <= registrador:EXMEM.data_out[104]
+EXMEM_Z_out_WF <= registrador:EXMEM.data_out[69]
+out_sel_mux_jump <= uc:UC.pontosDeControle[0]
 
 
 |fluxo_dados|Registrador:IFID

@@ -25,7 +25,16 @@ entity fluxo_dados is
 		  out_MEMWB_ula					: OUT std_LOGIC_VECTOR(DATA_WIDTH-1 downto 0);
 		  out_select_mem_ula				: OUT std_LOGIC;
 		  out_WB_escreve_rc				: OUT std_LOGIC;
-		  out_enderecoEscrita         : OUT std_LOGIC_VECTOR(REGBANK_ADDR_WIDTH-1 downto 0)
+		  out_enderecoEscrita         : OUT std_LOGIC_VECTOR(REGBANK_ADDR_WIDTH-1 downto 0);
+		  out_sel_mux_beq					: OUT std_LOGIC;
+		  
+		  
+		  
+		 M_sel_beq_WF : OUT std_LOGIC;
+	 
+	   EXMEM_Z_out_WF :  OUT std_LOGIC;
+		  
+		  out_sel_mux_jump				: OUT std_LOGIC
 
     );
 end entity;
@@ -143,7 +152,8 @@ architecture estrutural of fluxo_dados is
 	 
 
 begin
-		
+M_sel_beq_WF <= M_sel_beq;
+EXMEM_Z_out_WF <= EXMEM_Z_out;		
 	 -- Passando soh para debug
     instrucao <= IFID_instrucao;
 	 
@@ -151,6 +161,8 @@ begin
 	 out_pc  <= pc_s;
 
     sel_mux_beq <= M_sel_beq AND EXMEM_Z_out;
+	 out_sel_mux_beq <= sel_mux_beq;
+	 out_sel_mux_jump <= sel_mux_jump;
 	 
 	 
 	  -- Reg IF/ID
@@ -183,8 +195,8 @@ begin
 				
         );
 		  
-	  -- Reg EX/MEM WB          M          PC+4            Z       saida_ula      RB        saidaRDRT
-	  in_exmem <=  IDEX_WB & IDEX_M & IDEX_pcmais4 & Z_out & saida_ula & IDEX_rb & saida_mux_rd_rt;
+	  -- Reg EX/MEM WB          M     PC+4                      Z       saida_ula      RB        saidaRDRT
+	  in_exmem <=  IDEX_WB & IDEX_M & PC_mais_4_mais_imediato & Z_out & saida_ula & IDEX_rb & saida_mux_rd_rt;
 	  EXMEM: entity work.Registrador
         generic map (
             NUM_BITS => 107
@@ -215,7 +227,9 @@ begin
 
     -- Ajuste do PC para jump (concatena com imediato multiplicado por 4)
     PC_4_concat_imed <= PC_mais_4(31 downto 28) & saida_shift_jump;
-
+	 -- PC_4_concat_imed <= EXMEM_PC_mais_4(31 downto 28) & saida_shift_jump;
+ 
+		
     -- Banco de registradores
      BR: entity work.bancoRegistradores 
         generic map (
@@ -402,7 +416,7 @@ begin
         )
 		port map (
             entradaA => PC_mais_4,
-            entradaB => PC_mais_4_mais_imediato,
+            entradaB => EXMEM_PC_mais_4, --PC_mais_4_mais_imediato,
             seletor  => sel_mux_beq,
             saida    => saida_mux_beq
         );

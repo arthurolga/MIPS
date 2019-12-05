@@ -30,7 +30,7 @@ begin
 				 ulaCtrlSlt WHEN (ALUop=readFunctULA AND funct=functSLT) ELSE -- SLT 
 				 "0010" WHEN ALUop="001" ELSE -- LW 
 				 "0010" WHEN ALUop="010" ELSE -- STR
-				 "0111" WHEN ALUop="011" ELSE -- SLT/BEQ
+				 "0110" WHEN ALUop="011" ELSE -- BEQ
 				 "0000";
 	
 

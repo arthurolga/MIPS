@@ -1,6 +1,6 @@
 Flow report for mips
-Wed Dec  4 11:03:30 2019
-Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+Thu Dec  5 10:59:59 2019
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
 ---------------------
@@ -21,7 +21,7 @@ Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2017  Intel Corporation. All rights reserved.
+Copyright (C) 2018  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
@@ -40,18 +40,18 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Wed Dec  4 11:03:30 2019       ;
-; Quartus Prime Version              ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
+; Flow Status                        ; Successful - Thu Dec  5 10:59:59 2019       ;
+; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; mips                                        ;
 ; Top-level Entity Name              ; fluxo_dados                                 ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE115F29C7                               ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 2,882                                       ;
-;     Total combinational functions  ; 1,781                                       ;
-;     Dedicated logic registers      ; 1,323                                       ;
-; Total registers                    ; 1323                                        ;
-; Total pins                         ; 239                                         ;
+; Total logic elements               ; 2,876                                       ;
+;     Total combinational functions  ; 1,774                                       ;
+;     Dedicated logic registers      ; 1,354                                       ;
+; Total registers                    ; 1354                                        ;
+; Total pins                         ; 243                                         ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 4,096                                       ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -64,7 +64,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 12/04/2019 11:03:00 ;
+; Start date & time ; 12/05/2019 10:59:41 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; mips                ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 52227700979.157546818006976            ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 163580567883137.157555438119058        ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                                   ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)                 ; <None>        ; --          ; --             ;
 ; EDA_TIME_SCALE                      ; 1 ps                                   ; --            ; --          ; eda_simulation ;
@@ -100,10 +100,10 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:12     ; 1.0                     ; 1015 MB             ; 00:00:22                           ;
-; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 1062 MB             ; 00:00:00                           ;
-; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 1070 MB             ; 00:00:01                           ;
-; Total                ; 00:00:14     ; --                      ; --                  ; 00:00:23                           ;
+; Analysis & Synthesis ; 00:00:11     ; 1.0                     ; 1022 MB             ; 00:00:24                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 1051 MB             ; 00:00:00                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 1062 MB             ; 00:00:01                           ;
+; Total                ; 00:00:13     ; --                      ; --                  ; 00:00:25                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -112,9 +112,9 @@ refer to the applicable agreement for further details.
 +----------------------+------------------+----------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name        ; OS Version ; Processor type ;
 +----------------------+------------------+----------------+------------+----------------+
-; Analysis & Synthesis ; ubuntu           ; Ubuntu 16.04.4 ; 16         ; x86_64         ;
-; EDA Netlist Writer   ; ubuntu           ; Ubuntu 16.04.4 ; 16         ; x86_64         ;
-; EDA Netlist Writer   ; ubuntu           ; Ubuntu 16.04.4 ; 16         ; x86_64         ;
+; Analysis & Synthesis ; arqcomp-0x00     ; Ubuntu 18.04.2 ; 18         ; x86_64         ;
+; EDA Netlist Writer   ; arqcomp-0x00     ; Ubuntu 18.04.2 ; 18         ; x86_64         ;
+; EDA Netlist Writer   ; arqcomp-0x00     ; Ubuntu 18.04.2 ; 18         ; x86_64         ;
 +----------------------+------------------+----------------+------------+----------------+
 
 
@@ -122,8 +122,8 @@ refer to the applicable agreement for further details.
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off mips -c mips
-quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off mips -c mips --vector_source=/home/lucasv/Desktop/mips/Waveform9.vwf --testbench_file=/home/lucasv/Desktop/mips/simulation/qsim/Waveform9.vwf.vht
-quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory=/home/lucasv/Desktop/mips/simulation/qsim/ mips -c mips
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off mips -c mips --vector_source=/home/arqcomp/Desktop/MIPS/Waveform10.vwf --testbench_file=/home/arqcomp/Desktop/MIPS/simulation/qsim/Waveform10.vwf.vht
+quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory=/home/arqcomp/Desktop/MIPS/simulation/qsim/ mips -c mips
 
 
 

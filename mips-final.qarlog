@@ -1,0 +1,49 @@
+Quartus Prime Archive log --	/home/arqcomp/Desktop/MIPS/mips-final.qarlog
+
+Archive:	/home/arqcomp/Desktop/MIPS/mips-final.qar
+Date:		Thu Dec  5 16:20:37 2019
+Quartus Prime		18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+	=========== Files Selected: ===========
+/home/arqcomp/Desktop/MIPS/ROM.vhd
+/home/arqcomp/Desktop/MIPS/Registrador.vhd
+/home/arqcomp/Desktop/MIPS/TesteULA.vwf
+/home/arqcomp/Desktop/MIPS/UC_ULA.vhd
+/home/arqcomp/Desktop/MIPS/ULA.vhd
+/home/arqcomp/Desktop/MIPS/Waveform1.vwf
+/home/arqcomp/Desktop/MIPS/Waveform10.vwf
+/home/arqcomp/Desktop/MIPS/Waveform11.vwf
+/home/arqcomp/Desktop/MIPS/Waveform12.vwf
+/home/arqcomp/Desktop/MIPS/Waveform2.vwf
+/home/arqcomp/Desktop/MIPS/Waveform3.vwf
+/home/arqcomp/Desktop/MIPS/Waveform4.vwf
+/home/arqcomp/Desktop/MIPS/Waveform5.vwf
+/home/arqcomp/Desktop/MIPS/Waveform6.vwf
+/home/arqcomp/Desktop/MIPS/Waveform7.vwf
+/home/arqcomp/Desktop/MIPS/Waveform8.vwf
+/home/arqcomp/Desktop/MIPS/Waveform9.vwf
+/home/arqcomp/Desktop/MIPS/assignment_defaults.qdf
+/home/arqcomp/Desktop/MIPS/bancoRegistradores.vhd
+/home/arqcomp/Desktop/MIPS/clock_generator.vhd
+/home/arqcomp/Desktop/MIPS/constantesMIPS.vhd
+/home/arqcomp/Desktop/MIPS/conversorHex7Seg.vhd
+/home/arqcomp/Desktop/MIPS/edgeDetector.vhd
+/home/arqcomp/Desktop/MIPS/estendeSinalGenerico.vhd
+/home/arqcomp/Desktop/MIPS/fluxo_dados.vhd
+/home/arqcomp/Desktop/MIPS/mips.qpf
+/home/arqcomp/Desktop/MIPS/mips.qsf
+/home/arqcomp/Desktop/MIPS/mips.sdc
+/home/arqcomp/Desktop/MIPS/mips.vhd
+/home/arqcomp/Desktop/MIPS/mips_assignment_defaults.qdf
+/home/arqcomp/Desktop/MIPS/muxGenerico2.vhd
+/home/arqcomp/Desktop/MIPS/output_files/Waveform.vwf
+/home/arqcomp/Desktop/MIPS/shift2.vhd
+/home/arqcomp/Desktop/MIPS/shift2_imediato.vhd
+/home/arqcomp/Desktop/MIPS/single_port_RAM.vhd
+/home/arqcomp/Desktop/MIPS/soma4.vhd
+/home/arqcomp/Desktop/MIPS/somador.vhd
+/home/arqcomp/Desktop/MIPS/uc.vhd
+	======= Total: 38 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

@@ -28,6 +28,7 @@ source_file = 1, /home/arqcomp/Desktop/MIPS/Waveform7.vwf
 source_file = 1, /home/arqcomp/Desktop/MIPS/Waveform8.vwf
 source_file = 1, /home/arqcomp/Desktop/MIPS/Waveform9.vwf
 source_file = 1, /home/arqcomp/Desktop/MIPS/Waveform10.vwf
+source_file = 1, /home/arqcomp/Desktop/MIPS/edgeDetector.vhd
 source_file = 1, /home/arqcomp/intelFPGA_lite/18.1/quartus/libraries/vhdl/ieee/prmtvs_b.vhd
 source_file = 1, /home/arqcomp/intelFPGA_lite/18.1/quartus/libraries/vhdl/ieee/prmtvs_p.vhd
 source_file = 1, /home/arqcomp/intelFPGA_lite/18.1/quartus/libraries/vhdl/ieee/timing_b.vhd

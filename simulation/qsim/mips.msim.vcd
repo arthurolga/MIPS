@@ -3,7 +3,7 @@ $comment
 		vcd file mips.msim.vcd -direction
 $end
 $date
-	Thu Dec  5 11:00:01 2019
+	Thu Dec  5 15:07:42 2019
 $end
 $version
 	ModelSim Version 10.5b

@@ -9,12 +9,12 @@ use work.constantesMIPS.all;
 entity mips is
 	port
     (
-        clk			            : IN  STD_LOGIC;
+--        clk			            : IN  STD_LOGIC;
 		  CLOCK_50			            : IN  STD_LOGIC;
-		  out_ula					: OUT std_logic_vector(DATA_WIDTH-1 downto 0);
-		  out_pc						: OUT std_logic_vector(DATA_WIDTH-1 downto 0);
+--		  out_ula					: OUT std_logic_vector(DATA_WIDTH-1 downto 0);
+--		  out_pc						: OUT std_logic_vector(DATA_WIDTH-1 downto 0);
 		  KEY									: IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-		  LEDR								: OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
+--		  LEDR								: OUT STD_LOGIC_VECTOR(10 DOWNTO 0);
 		  LEDG								: OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
 		  
 		  HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7 : out std_logic_vector(6 downto 0)
@@ -67,8 +67,8 @@ begin
 		  out_entradaBula				  => entrada_b_ula
     );
 	 
-	 out_pc  <= saida_pc;
-	 out_ula <= saida_ula;
+--	 out_pc  <= saida_pc;
+--	 out_ula <= saida_ula;
 	 
 	 
 
@@ -90,15 +90,30 @@ begin
 		  	dadoHex => entrada_b_ula(3 downto 0),
 			saida7seg => HEX6
 	);
+	
+	-- SAIDA ULA
 	dhex5: entity work.conversorHex7Seg port map(
-		  	dadoHex => saida_ula(3 downto 0),
+		  	dadoHex => saida_ula(7 downto 4),
 			saida7seg => HEX5
 	);
 	
+	dhex4: entity work.conversorHex7Seg port map(
+		  	dadoHex => saida_ula(3 downto 0),
+			saida7seg => HEX4
+	);
+	--
+	
+	-- PC
+	dhex1: entity work.conversorHex7Seg port map(
+		  	dadoHex => saida_pc(7 downto 4),
+			saida7seg => HEX1
+	);
+	
 	dhex0: entity work.conversorHex7Seg port map(
-		  	dadoHex => instrucao(3 downto 0),
+		  	dadoHex => saida_pc(3 downto 0),
 			saida7seg => HEX0
 	);
+	--
 	 
 
 end architecture;
